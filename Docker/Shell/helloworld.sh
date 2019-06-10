@@ -1,4 +1,4 @@
-docker image build --tag helloworld https://github.com/secobau/openshift/raw/master/Dockerfile/helloworld
+docker image build --tag helloworld https://raw.githubusercontent.com/secobau/openshift/master/Docker/Dockerfile/helloworld
 #docker image ls
 #docker image history helloworld
 docker container run helloworld
