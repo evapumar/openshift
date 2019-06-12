@@ -7,3 +7,6 @@ vi php.yaml
 ./oc get service
 ./oc expose service php
 ./oc get route
+
+./oc describe service php
+./oc describe route php
