@@ -3,3 +3,7 @@
 ./oc new-app https://github.com/secobau/phpinfo --name php -o yaml 1>php.yaml
 vi php.yaml
 ./oc create -f php.yaml -n epumar-php
+
+./oc get service
+./oc expose service php
+./oc get route
