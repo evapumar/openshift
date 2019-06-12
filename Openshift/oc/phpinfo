@@ -3,6 +3,7 @@
 ./oc set resources dc/phpinfo --limits=memory=80Mi
 ./oc expose svc/phpinfo
 ./oc logs bc/phpinfo --follow
+./oc logs dc/phpinfo --follow
 ./oc status
 ./oc status --suggest
 ./oc get all
