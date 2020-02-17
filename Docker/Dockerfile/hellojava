@@ -1,3 +1,0 @@
-FROM openjdk:jre-alpine
-ENTRYPOINT ["java"]
-CMD ["-version"]
