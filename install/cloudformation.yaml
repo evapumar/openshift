@@ -263,7 +263,6 @@ Resources:
     Properties:
       HealthCheckPath: !Ref HealthCheckPath
       HealthCheckPort: !Ref HealthCheckPort
-      HealthCheckProtocol: !Ref HealthCheckProtocol
       Port: !Ref PortTargetGroup
       Protocol: !Ref ProtocolTargetGroupALB
       Targets:
