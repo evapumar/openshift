@@ -29,12 +29,6 @@ Parameters:
       The port the load balancer uses when performing health checks on targets.
     Type: String
 
-  HealthCheckProtocol:
-    Default: HTTP
-    Description: >
-      The protocol the load balancer uses when performing health checks on targets.
-    Type: String
-
   HostedZoneName:
     Default: ''
     Description: >
@@ -71,40 +65,34 @@ Parameters:
       The IP protocol for Listener.
     Type: String
 
-  PortListener:
-    Default: 443
+  Port1:
+    Default: 80
     Description: >
-      The listening port for Listener.
+      The listening port 1.
     Type: Number
 
-  PortTargetGroup:
+  Port2:
     Default: 443
     Description: >
-      The listening port for the target group.
+      The listening port 2.
     Type: Number
 
-  ProtocolListenerALB:
+  ProtocolALB1:
+    Default: HTTP
+    Description: >
+      The protocol for Application Load Balancer 1.
+    Type: String
+
+  ProtocolALB2:
     Default: HTTPS
     Description: >
-      The protocol for Listener of the Application Load Balancer.
+      The protocol for Application Load Balancer 2.
     Type: String
 
-  ProtocolListenerNLB:
+  ProtocolNLB:
     Default: TCP
     Description: >
-      The protocol for Listener of the Network Load Balancer.
-    Type: String
-
-  ProtocolTargetGroupALB:
-    Default: HTTPS
-    Description: >
-      The internal protocol for Target Group of the Application Load Balancer.
-    Type: String
-
-  ProtocolTargetGroupNLB:
-    Default: TCP
-    Description: >
-      The internal protocol for Target Group of the Network Load Balancer.
+      The protocol for Network Load Balancer.
     Type: String
 
   RecordSetNameALB:
@@ -165,16 +153,26 @@ Parameters:
 
 Resources:
 
-  ListenerALB:
+  ListenerALB1:
+    Properties:
+      DefaultActions:
+        - TargetGroupArn: !Ref TargetGroupALB1
+          Type: forward
+      LoadBalancerArn: !Ref LoadBalancerALB
+      Port: !Ref Port1
+      Protocol: !Ref ProtocolALB1
+    Type: AWS::ElasticLoadBalancingV2::Listener
+
+  ListenerALB2:
     Properties:
       Certificates:
         - CertificateArn: !Sub 'arn:aws:acm:${AWS::Region}:${AWS::AccountId}:certificate/${Identifier}'
       DefaultActions:
-        - TargetGroupArn: !Ref TargetGroupALB
+        - TargetGroupArn: !Ref TargetGroupALB2
           Type: forward
       LoadBalancerArn: !Ref LoadBalancerALB
-      Port: !Ref PortListener
-      Protocol: !Ref ProtocolListenerALB
+      Port: !Ref Port2
+      Protocol: !Ref ProtocolALB2
     Type: AWS::ElasticLoadBalancingV2::Listener
 
   ListenerNLB:
@@ -183,8 +181,8 @@ Resources:
         - TargetGroupArn: !Ref TargetGroupNLB
           Type: forward
       LoadBalancerArn: !Ref LoadBalancerNLB
-      Port: !Ref PortListener
-      Protocol: !Ref ProtocolListenerNLB
+      Port: !Ref Port2
+      Protocol: !Ref ProtocolNLB
     Type: AWS::ElasticLoadBalancingV2::Listener
 
   LoadBalancerALB:
@@ -217,16 +215,6 @@ Resources:
       Type: A
     Type: AWS::Route53::RecordSet
 
-  RecordSetNLB:
-    Properties:
-      AliasTarget:
-        DNSName: !GetAtt LoadBalancerNLB.DNSName
-        HostedZoneId: !GetAtt LoadBalancerNLB.CanonicalHostedZoneID
-      HostedZoneName: !Sub '${HostedZoneName}.'
-      Name: !Sub '${RecordSetNameNLB}.${ClusterName}.${HostedZoneName}'
-      Type: A
-    Type: AWS::Route53::RecordSet
-
   RecordSetALBprivate:
     Properties:
       AliasTarget:
@@ -234,6 +222,16 @@ Resources:
         HostedZoneId: !GetAtt LoadBalancerALB.CanonicalHostedZoneID
       HostedZoneName: !Sub '${ClusterName}.${HostedZoneName}.'
       Name: !Sub '${RecordSetNameALB}.${ClusterName}.${HostedZoneName}'
+      Type: A
+    Type: AWS::Route53::RecordSet
+
+  RecordSetNLB:
+    Properties:
+      AliasTarget:
+        DNSName: !GetAtt LoadBalancerNLB.DNSName
+        HostedZoneId: !GetAtt LoadBalancerNLB.CanonicalHostedZoneID
+      HostedZoneName: !Sub '${HostedZoneName}.'
+      Name: !Sub '${RecordSetNameNLB}.${ClusterName}.${HostedZoneName}'
       Type: A
     Type: AWS::Route53::RecordSet
 
@@ -253,18 +251,37 @@ Resources:
       SecurityGroupIngress:
       -
         CidrIp: !Ref SecurityGroupCidrIp
-        FromPort: !Ref PortListener
+        FromPort: !Ref Port1
         IpProtocol: !Ref IpProtocolListener
-        ToPort: !Ref PortListener
+        ToPort: !Ref Port1
+      -
+        CidrIp: !Ref SecurityGroupCidrIp
+        FromPort: !Ref Port2
+        IpProtocol: !Ref IpProtocolListener
+        ToPort: !Ref Port2
       VpcId: !Ref VpcId
     Type: AWS::EC2::SecurityGroup
 
-  TargetGroupALB:
+  TargetGroupALB1:
     Properties:
       HealthCheckPath: !Ref HealthCheckPath
       HealthCheckPort: !Ref HealthCheckPort
-      Port: !Ref PortTargetGroup
-      Protocol: !Ref ProtocolTargetGroupALB
+      Port: !Ref Port1
+      Protocol: !Ref ProtocolALB1
+      Targets:
+        -   Id: !Ref InstanceWorker1
+        -   Id: !Ref InstanceWorker2
+        -   Id: !Ref InstanceWorker3
+      TargetType: instance
+      VpcId: !Ref VpcId
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+
+  TargetGroupALB2:
+    Properties:
+      HealthCheckPath: !Ref HealthCheckPath
+      HealthCheckPort: !Ref HealthCheckPort
+      Port: !Ref Port2
+      Protocol: !Ref ProtocolALB2
       Targets:
         -   Id: !Ref InstanceWorker1
         -   Id: !Ref InstanceWorker2
@@ -277,8 +294,8 @@ Resources:
     Properties:
       HealthCheckPath: !Ref HealthCheckPath
       HealthCheckPort: !Ref HealthCheckPort
-      Port: !Ref PortTargetGroup
-      Protocol: !Ref ProtocolTargetGroupNLB
+      Port: !Ref Port2
+      Protocol: !Ref ProtocolNLB
       Targets:
         -   Id: !Ref InstanceWorker1
         -   Id: !Ref InstanceWorker2
