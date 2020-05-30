@@ -11,40 +11,28 @@ Description: This template fixes the problem of the invalid certificate for Open
 
 Parameters:
 
-  HealthCheckPathALB:
+  ClusterName:
+    Default: ''
+    Description: >
+      The name of the Openshift cluster
+    Type: String
+
+  HealthCheckPath:
     Default: /healthz
     Description: >
-      The ping path that is the destination on the targets of ALB for health checks.
+      The ping path that is the destination on the targets for health checks.
     Type: String
 
-  HealthCheckPathNLB:
-    Default: /healthz
-    Description: >
-      The ping path that is the destination on the targets of NLB for health checks.
-    Type: String
-
-  HealthCheckPortALB:
+  HealthCheckPort:
     Default: 1936
     Description: >
-      The port the load balancer uses when performing health checks on targets of ALB.
+      The port the load balancer uses when performing health checks on targets.
     Type: String
 
-  HealthCheckPortNLB:
-    Default: 1936
-    Description: >
-      The port the load balancer uses when performing health checks on targets of NLB.
-    Type: String
-
-  HealthCheckProtocolALB:
+  HealthCheckProtocol:
     Default: HTTP
     Description: >
-      The protocol the load balancer uses when performing health checks on targets of ALB.
-    Type: String
-
-  HealthCheckPortNLB:
-    Default: HTTP
-    Description: >
-      The protocol the load balancer uses when performing health checks on targets of NLB.
+      The protocol the load balancer uses when performing health checks on targets.
     Type: String
 
   HostedZoneName:
@@ -77,40 +65,22 @@ Parameters:
       The Id of Instance Worker 3
     Type: String
 
-  IpProtocolListenerALB:
+  IpProtocolListener:
     Default: tcp
     Description: >
-      The IP protocol for Listener of the Application Load Balancer.
+      The IP protocol for Listener.
     Type: String
 
-  IpProtocolListenerNLB:
-    Default: tcp
-    Description: >
-      The IP protocol for Listener of the Network Load Balancer.
-    Type: String
-
-  PortListenerALB:
+  PortListener:
     Default: 443
     Description: >
-      The listening port for Listener of the Application Load Balancer.
+      The listening port for Listener.
     Type: Number
 
-  PortListenerNLB:
+  PortTargetGroup:
     Default: 443
     Description: >
-      The listening port for Listener of the Network Load Balancer.
-    Type: Number
-
-  PortTargetGroupALB:
-    Default: 443
-    Description: >
-      The listening port for the target group of the Application Load Balancer.
-    Type: Number
-
-  PortTargetGroupNLB:
-    Default: 443
-    Description: >
-      The listening port for the target group of the Network Load Balancer.
+      The listening port for the target group.
     Type: Number
 
   ProtocolListenerALB:
@@ -149,17 +119,10 @@ Parameters:
       The Record Set Name for the Network Load Balancer.
     Type: String
 
-  SecurityGroupCidrIpALB:
+  SecurityGroupCidrIp:
     Default: 0.0.0.0/0
     Description: >
-      Allowed CIDR block for external web access to the Application Load Balancer. 
-      Set it to 0.0.0.0/0 to make it accessible from anywhere.
-    Type: String
-
-  SecurityGroupCidrIpNLB:
-    Default: 0.0.0.0/0
-    Description: >
-      Allowed CIDR block for external network access to the Network Load Balancer. 
+      Allowed CIDR block for external web access.
       Set it to 0.0.0.0/0 to make it accessible from anywhere.
     Type: String
 
@@ -210,7 +173,7 @@ Resources:
         - TargetGroupArn: !Ref TargetGroupALB
           Type: forward
       LoadBalancerArn: !Ref LoadBalancerALB
-      Port: !Ref PortListenerALB
+      Port: !Ref PortListener
       Protocol: !Ref ProtocolListenerALB
     Type: AWS::ElasticLoadBalancingV2::Listener
 
@@ -220,7 +183,7 @@ Resources:
         - TargetGroupArn: !Ref TargetGroupNLB
           Type: forward
       LoadBalancerArn: !Ref LoadBalancerNLB
-      Port: !Ref PortListenerALB
+      Port: !Ref PortListener
       Protocol: !Ref ProtocolListenerNLB
     Type: AWS::ElasticLoadBalancingV2::Listener
 
@@ -237,7 +200,6 @@ Resources:
 
   LoadBalancerNLB:
     Properties:
-      Scheme: internal
       Subnets:
         - !Ref SubnetPublic1
         - !Ref SubnetPublic2
@@ -261,40 +223,28 @@ Resources:
         DNSName: !GetAtt LoadBalancerNLB.DNSName
         HostedZoneId: !GetAtt LoadBalancerNLB.CanonicalHostedZoneID
       HostedZoneName: !Sub '${HostedZoneName}.'
-      Name: !Sub '${RecordSetnameNLB}.${ClusterName}.${HostedZoneName}'
+      Name: !Sub '${RecordSetNameNLB}.${ClusterName}.${HostedZoneName}'
       Type: A
     Type: AWS::Route53::RecordSet
 
-  SecurityGroupALB:
+  SecurityGroup:
     Properties:
       GroupDescription: Allow access to the Application Load Balancer
       SecurityGroupIngress:
       -
-        CidrIp: !Ref SecurityGroupCidrIpALB
-        FromPort: !Ref PortListenerALB
-        IpProtocol: !Ref IpProtocolListenerALB
-        ToPort: !Ref PortListenerALB
-      VpcId: !Ref VpcId
-    Type: AWS::EC2::SecurityGroup
-
-  SecurityGroupNLB:
-    Properties:
-      GroupDescription: Allow access to the Network Load Balancer
-      SecurityGroupIngress:
-      -
-        CidrIp: !Ref VpcCidrBlock
-        FromPort: !Ref PortListenerNLB
-        IpProtocol: !Ref IpProtocolListenerNLB
-        ToPort: !Ref PortListenerNLB
+        CidrIp: !Ref SecurityGroupCidrIp
+        FromPort: !Ref PortListener
+        IpProtocol: !Ref IpProtocolListener
+        ToPort: !Ref PortListener
       VpcId: !Ref VpcId
     Type: AWS::EC2::SecurityGroup
 
   TargetGroupALB:
     Properties:
-      HealthCheckPath: !Ref HealthCheckPathALB
-      HealthCheckPort: !Ref HealthCheckPortALB
-      HealthCheckProtocol: !Ref HealthCheckProtocolALB
-      Port: !Ref PortTargetGroupALB
+      HealthCheckPath: !Ref HealthCheckPath
+      HealthCheckPort: !Ref HealthCheckPort
+      HealthCheckProtocol: !Ref HealthCheckProtocol
+      Port: !Ref PortTargetGroup
       Protocol: !Ref ProtocolTargetGroupALB
       Targets:
         -   Id: !Ref InstanceWorker1
@@ -306,10 +256,10 @@ Resources:
 
   TargetGroupNLB:
     Properties:
-      HealthCheckPath: !Ref HealthCheckPathNLB
-      HealthCheckPort: !Ref HealthCheckPortNLB
-      HealthCheckProtocol: !Ref HealthCheckProtocolNLB
-      Port: !Ref PortTargetGroupNLB
+      HealthCheckPath: !Ref HealthCheckPath
+      HealthCheckPort: !Ref HealthCheckPort
+      HealthCheckProtocol: !Ref HealthCheckProtocol
+      Port: !Ref PortTargetGroup
       Protocol: !Ref ProtocolTargetGroupNLB
       Targets:
         -   Id: !Ref InstanceWorker1

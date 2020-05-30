@@ -23,6 +23,14 @@ oc get ingresscontrollers/default -n openshift-ingress-operator -o yaml 1> ingre
 oc delete -f ingresscontroller.yaml
 oc create -f ingresscontroller-template.yaml 
 
+InstanceWorker1=$( aws ec2 describe-instances --filter "Name=tag:Name,Values=$ClusterName-*-worker-${s3region}a*" --query "Reservations[].Instances[].InstanceId" --output text )
+InstanceWorker2=$( aws ec2 describe-instances --filter "Name=tag:Name,Values=$ClusterName-*-worker-${s3region}b*" --query "Reservations[].Instances[].InstanceId" --output text )
+InstanceWorker3=$( aws ec2 describe-instances --filter "Name=tag:Name,Values=$ClusterName-*-worker-${s3region}c*" --query "Reservations[].Instances[].InstanceId" --output text )
+
+SubnetPublic1=$( aws ec2 describe-subnets --filter "Name=tag:Name,Values=$ClusterName-*-public-${s3region}a" --output text --query "Subnets[].SubnetId" )
+SubnetPublic2=$( aws ec2 describe-subnets --filter "Name=tag:Name,Values=$ClusterName-*-public-${s3region}b" --output text --query "Subnets[].SubnetId" )
+SubnetPublic3=$( aws ec2 describe-subnets --filter "Name=tag:Name,Values=$ClusterName-*-public-${s3region}c" --output text --query "Subnets[].SubnetId" )
+
 VpcId=$( aws ec2 describe-vpcs --filter "Name=tag:Name,Values=$ClusterName-*-vpc" --output text --query "Vpcs[].VpcId" )
 VpcCidrBlock=$( aws ec2 describe-vpcs --filter "Name=tag:Name,Values=$ClusterName-*-vpc" --output text --query "Vpcs[].CidrBlockAssociationSet[].CidrBlock" )
 VpcDefaultSecurityGroup=$( aws ec2 describe-security-groups --filter "Name=vpc-id,Values=$VpcId" "Name=group-name,Values=default" --query "SecurityGroups[].GroupId" --output text )
@@ -36,6 +44,7 @@ aws cloudformation create-stack                                         \
   --capabilities                                                        \
     $caps                                                               \
   --parameters                                                          \
+    ParameterKey=ClusterName,ParameterValue=$ClusterName                \
     ParameterKey=HostedZoneName,ParameterValue=$HostedZoneName          \
     ParameterKey=Identifier,ParameterValue=$Identifier                  \
     ParameterKey=InstanceWorker1,ParameterValue=$InstanceWorker1        \
