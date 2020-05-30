@@ -1,0 +1,16 @@
+apiVersion: operator.openshift.io/v1
+items:
+- apiVersion: operator.openshift.io/v1
+  kind: IngressController
+  metadata:
+    name: default
+    namespace: openshift-ingress-operator
+  spec:
+    domain: apps.v4-3-22.sebastian-colomar.es
+    endpointPublishingStrategy:
+      loadBalancer:
+        scope: External
+      type: HostNetwork
+    replicas: 3
+    selector: ingresscontroller.operator.openshift.io/deployment-ingresscontroller=default
+kind: IngressController

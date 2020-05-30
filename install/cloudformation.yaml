@@ -1,0 +1,237 @@
+61f62a05-49e0-41d7-a04e-bd3fb568f74a
+#########################################################################
+#      Copyright (C) 2020        Sebastian Francisco Colomar Bauza      #
+#      SPDX-License-Identifier:  GPL-2.0-only                           #
+#########################################################################
+
+---
+
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: This template fixes the problem of the invalid certificate for Openshift in AWS
+
+Parameters:
+
+  HostedZoneName:
+    Default: ''
+    Description: >
+      The name of the hosted zone that you want to create records in.
+    Type: String
+
+  Identifier:
+    Default: ''
+    Description: >
+      The Identifier of the certificate you want to use.
+    Type: String
+
+  InstanceWorker1:
+    Default: ''
+    Description: >
+      The Id of Instance Worker 1
+    Type: String
+
+  InstanceWorker2:
+    Default: ''
+    Description: >
+      The Id of Instance Worker 2
+    Type: String
+
+  InstanceWorker3:
+    Default: ''
+    Description: >
+      The Id of Instance Worker 3
+    Type: String
+
+  IpProtocolListenerALB:
+    Default: tcp
+    Description: >
+      The IP protocol for Listener of the Application Load Balancer.
+    Type: String
+
+  IpProtocolListenerNLB:
+    Default: tcp
+    Description: >
+      The IP protocol for Listener of the Network Load Balancer.
+    Type: String
+
+  PortListenerALB:
+    Default: 443
+    Description: >
+      The listening port for Listener of the Application Load Balancer.
+    Type: Number
+
+  PortListenerNLB:
+    Default: 443
+    Description: >
+      The listening port for Listener of the Network Load Balancer.
+    Type: Number
+
+  PortTargetGroupALB:
+    Default: 443
+    Description: >
+      The listening port for the target group of the Application Load Balancer.
+    Type: Number
+
+  PortTargetGroupNLB:
+    Default: 443
+    Description: >
+      The listening port for the target group of the Network Load Balancer.
+    Type: Number
+
+  ProtocolListenerALB:
+    Default: HTTPS
+    Description: >
+      The protocol for Listener of the Application Load Balancer.
+    Type: String
+
+  ProtocolListenerNLB:
+    Default: TCP
+    Description: >
+      The protocol for Listener of the Network Load Balancer.
+    Type: String
+
+  ProtocolTargetGroupALB:
+    Default: HTTP
+    Description: >
+      The internal protocol for Target Group of the Application Load Balancer.
+    Type: String
+
+  ProtocolTargetGroupNLB:
+    Default: TCP
+    Description: >
+      The internal protocol for Target Group of the Network Load Balancer.
+    Type: String
+
+  SecurityGroupCidrIpALB:
+    Default: 0.0.0.0/0
+    Description: >
+      Allowed CIDR block for external web access to the Application Load Balancer. 
+      Set it to 0.0.0.0/0 to make it accessible from anywhere.
+    Type: String
+
+  VPC:
+    Default: ''
+    Description: >
+      The Id of the VPC
+    Type: String
+
+  VPCCidrBlock:
+    Default: ''
+    Description: >
+      The CIDR block for the VPC
+    Type: String
+
+
+Resources:
+
+  ListenerALB:
+    Properties:
+      Certificates:
+        - CertificateArn: !Sub 'arn:aws:acm:${AWS::Region}:${AWS::AccountId}:certificate/${Identifier}'
+      DefaultActions:
+        - TargetGroupArn: !Ref TargetGroupALB
+          Type: forward
+      LoadBalancerArn: !Ref LoadBalancerALB
+      Port: !Ref PortListenerWorker1
+      Protocol: !Ref ProtocolListenerALB
+    Type: AWS::ElasticLoadBalancingV2::Listener
+
+  ListenerNLB:
+    Properties:
+      DefaultActions:
+        - TargetGroupArn: !Ref TargetGroupNLB
+          Type: forward
+      LoadBalancerArn: !Ref LoadBalancerNLB
+      Port: !Ref PortListenerALB
+      Protocol: !Ref ProtocolListenerNLB
+    Type: AWS::ElasticLoadBalancingV2::Listener
+
+  LoadBalancerALB:
+    Properties:
+      SecurityGroups:
+        - !GetAtt VPC.DefaultSecurityGroup
+        - !Ref SecurityGroupALB
+      Subnets:
+        - !Ref SubnetPublic1
+        - !Ref SubnetPublic2
+        - !Ref SubnetPublic3
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+
+  LoadBalancerNLB:
+    Properties:
+      Scheme: internal
+      Subnets:
+        - !Ref SubnetPublic1
+        - !Ref SubnetPublic2
+        - !Ref SubnetPublic3
+      Type: network
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+
+  RecordSetALB:
+    Properties:
+      AliasTarget:
+        DNSName: !GetAtt LoadBalancerALB.DNSName
+        HostedZoneId: !GetAtt LoadBalancerALB.CanonicalHostedZoneID
+      HostedZoneName: !Sub '${HostedZoneName}.'
+      Name: !Sub '*.apps.${ClusterName}.${HostedZoneName}'
+      Type: A
+    Type: AWS::Route53::RecordSet
+
+  RecordSetNLB:
+    Properties:
+      AliasTarget:
+        DNSName: !GetAtt LoadBalancerNLB.DNSName
+        HostedZoneId: !GetAtt LoadBalancerNLB.CanonicalHostedZoneID
+      HostedZoneName: !Sub '${HostedZoneName}.'
+      Name: !Sub 'oauth-openshift.apps.${ClusterName}.${HostedZoneName}'
+      Type: A
+    Type: AWS::Route53::RecordSet
+
+  SecurityGroupALB:
+    Properties:
+      GroupDescription: Allow access to the Application Load Balancer
+      SecurityGroupIngress:
+      -
+        CidrIp: !Ref SecurityGroupCidrIpALB
+        FromPort: !Ref PortListenerALB
+        IpProtocol: !Ref IpProtocolListenerALB
+        ToPort: !Ref PortListenerALB
+      VpcId: !Ref VPC
+    Type: AWS::EC2::SecurityGroup
+
+  SecurityGroupNLB:
+    Properties:
+      GroupDescription: Allow access to the Network Load Balancer
+      SecurityGroupIngress:
+      -
+        CidrIp: !Ref VPCCidrBlock
+        FromPort: !Ref PortListenerNLB
+        IpProtocol: !Ref IpProtocolListenerNLB
+        ToPort: !Ref PortListenerKK
+      VpcId: !Ref VPC
+    Type: AWS::EC2::SecurityGroup
+
+  TargetGroupALB:
+    Properties:
+      Port: !Ref PortTargetGroupALB
+      Protocol: !Ref ProtocolTargetGroupALB
+      Targets:
+        -   Id: !Ref InstanceWorker1
+        -   Id: !Ref InstanceWorker2
+        -   Id: !Ref InstanceWorker3
+      TargetType: instance
+      VpcId: !Ref VPC
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+
+  TargetGroupNLB:
+    Properties:
+      Port: !Ref PortTargetGroupNLB
+      Protocol: !Ref ProtocolTargetGroupNLB
+      Targets:
+        -   Id: !Ref InstanceWorker1
+        -   Id: !Ref InstanceWorker2
+        -   Id: !Ref InstanceWorker3
+      TargetType: instance
+      VpcId: !Ref VPC
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+
