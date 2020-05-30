@@ -96,7 +96,7 @@ Parameters:
     Type: String
 
   ProtocolTargetGroupALB:
-    Default: HTTP
+    Default: HTTPS
     Description: >
       The internal protocol for Target Group of the Application Load Balancer.
     Type: String
@@ -191,7 +191,7 @@ Resources:
     Properties:
       SecurityGroups:
         - !Ref VpcDefaultSecurityGroup
-        - !Ref SecurityGroupALB
+        - !Ref SecurityGroup
       Subnets:
         - !Ref SubnetPublic1
         - !Ref SubnetPublic2
@@ -227,6 +227,26 @@ Resources:
       Type: A
     Type: AWS::Route53::RecordSet
 
+  RecordSetALBprivate:
+    Properties:
+      AliasTarget:
+        DNSName: !GetAtt LoadBalancerALB.DNSName
+        HostedZoneId: !GetAtt LoadBalancerALB.CanonicalHostedZoneID
+      HostedZoneName: !Sub '${ClusterName}.${HostedZoneName}.'
+      Name: !Sub '${RecordSetNameALB}.${ClusterName}.${HostedZoneName}'
+      Type: A
+    Type: AWS::Route53::RecordSet
+
+  RecordSetNLBprivate:
+    Properties:
+      AliasTarget:
+        DNSName: !GetAtt LoadBalancerNLB.DNSName
+        HostedZoneId: !GetAtt LoadBalancerNLB.CanonicalHostedZoneID
+      HostedZoneName: !Sub '${ClusterName}.${HostedZoneName}.'
+      Name: !Sub '${RecordSetNameNLB}.${ClusterName}.${HostedZoneName}'
+      Type: A
+    Type: AWS::Route53::RecordSet
+
   SecurityGroup:
     Properties:
       GroupDescription: Allow access to the Application Load Balancer
@@ -258,7 +278,6 @@ Resources:
     Properties:
       HealthCheckPath: !Ref HealthCheckPath
       HealthCheckPort: !Ref HealthCheckPort
-      HealthCheckProtocol: !Ref HealthCheckProtocol
       Port: !Ref PortTargetGroup
       Protocol: !Ref ProtocolTargetGroupNLB
       Targets:
