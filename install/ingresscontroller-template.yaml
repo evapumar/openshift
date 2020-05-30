@@ -6,7 +6,7 @@ items:
     name: default
     namespace: openshift-ingress-operator
   spec:
-    domain: apps.v4-3-22.sebastian-colomar.es
+    domain: apps.ClusterName.HostedZoneName
     endpointPublishingStrategy:
       loadBalancer:
         scope: External

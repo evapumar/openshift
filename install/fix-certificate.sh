@@ -5,12 +5,13 @@
 #      SPDX-License-Identifier:  GPL-2.0-only                           #
 #########################################################################
 caps=CAPABILITY_IAM							;
+ClusterName=v4-4-5							;
 ClusterName=v4-3-22							;
 HostedZoneName=sebastian-colomar.es					;
+Identifier=d4085e20-28a4-4d28-873a-2c6e3ec04626				;
 Identifier=61f62a05-49e0-41d7-a04e-bd3fb568f74a				;
 s3name=docker-aws							;
 s3region=ap-south-1							;
-stack=openshift								;
 template=cloudformation.yaml						;
 #########################################################################
 sed --in-place s/ClusterName/$ClusterName/ 				\
@@ -18,8 +19,6 @@ sed --in-place s/ClusterName/$ClusterName/ 				\
 sed --in-place s/HostedZoneName/$HostedZoneName/			\
 	ingresscontroller-template.yaml					;
 tail -1 .openshift_install.log						; 
-oc login --token=XXXX 							\
-	--server=https://api.$ClusterName.$HostedZoneName:6443		;
 oc get ingresscontrollers/default 					\
 	--namespace=openshift-ingress-operator 				\
 	--output=yaml 							\
@@ -84,6 +83,7 @@ VpcDefaultSecurityGroup=$( 						\
 )									;
 #########################################################################
 s3domain=$s3name.s3.$s3region.amazonaws.com				;
+stack=$ClusterName							;
 template_url=https://$s3domain/$ClusterName/$template			;
 aws s3 cp $template s3://$s3name/$ClusterName/$template			;
 aws cloudformation create-stack                                         \
