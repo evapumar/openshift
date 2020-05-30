@@ -292,8 +292,6 @@ Resources:
 
   TargetGroupNLB:
     Properties:
-      HealthCheckPath: !Ref HealthCheckPath
-      HealthCheckPort: !Ref HealthCheckPort
       Port: !Ref Port2
       Protocol: !Ref ProtocolNLB
       Targets:
