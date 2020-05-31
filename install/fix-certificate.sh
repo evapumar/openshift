@@ -83,7 +83,7 @@ VpcDefaultSecurityGroup=$( 						\
 )									;
 #########################################################################
 s3domain=$s3name.s3.$s3region.amazonaws.com				;
-stack=$ClusterName							;
+stack=$ClusterName-openshift-fix-certificate				;
 template_url=https://$s3domain/$ClusterName/$template			;
 aws s3 cp $template s3://$s3name/$ClusterName/$template			;
 aws cloudformation create-stack                                         \
