@@ -46,12 +46,17 @@ https://raw.githubusercontent.com/secobau/openshift/master/install/install-confi
 openshift-install create cluster --dir=$HOME/environment/openshift/install --log-level=debug
 ```
 
+Now you can access your cluster in this URL:
+* https://console-openshift-console.apps.training.sebastian-colomar.es
+
+In order to fix the problem of the invalid certificate you need to follow these instructions:
+
 ```bash
 export KUBECONFIG=$HOME/environment/openshift/install/auth/kubeconfig
+wget https://raw.githubusercontent.com/secobau/openshift/master/install/fix-certificate.sh
+chmod +x fix-certificate.sh
+./fix-certificate.sh
 ```
-
-Fix Invalid Certificate in AWS:
-* https://raw.githubusercontent.com/secobau/openshift/master/install/fix-certificate.sh
 
 After running the previous script you need to open ports 80 and 1936 internally for the workers.
 You also need to open port 443 externaly (open to the world) for the workers.
