@@ -31,12 +31,19 @@ ssh-add $HOME/.ssh/id_rsa
 
 for mode in client install
 do
-  wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-$mode-linux.tar.gz
-  gunzip openshift-$mode-linux.tar.gz && tar xf openshift-$mode-linux.tar && rm openshift-$mode-linux.tar
+  wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.4.5/openshift-$mode-linux-4.4.5.tar.gz
+  gunzip openshift-$mode-linux-4.4.5.tar.gz
+  tar xf openshift-$mode-linux-4.4.5.tar
+  rm openshift-$mode-linux-4.4.5.tar
 done
-mkdir --parents $HOME/bin && mv kubectl oc openshift-install $HOME/bin
+mkdir --parents $HOME/bin
+for binary in kubectl oc
+do
+  mv $binary $HOME/bin
+done
+mv openshift-install $HOME/bin/openshift-install-4.4.5
 
-openshift-install create install-config
+openshift-install-4.4.5 create install-config
 
 ```
 ```bash
