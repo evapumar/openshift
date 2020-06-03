@@ -10,9 +10,9 @@ sed --in-place 								\
 	/' 'platform/d 							\
 	$file								;
 sed --in-place 								\
-	/'name.*master/s/^.*$/  name: master\n  platform:\n    aws:\n      type: 3a.xlarge'/ \
+	/'name.*master/s/^.*$/  name: master\n  platform:\n    aws:\n      type: t3a.xlarge'/ \
 	$file								;
 sed --in-place 								\
-	/'name.*worker/s/^.*$/  name: worker\n  platform:\n    aws:\n      type: 3a.large'/ \
+	/'name.*worker/s/^.*$/  name: worker\n  platform:\n    aws:\n      type: t3a.large'/ \
 	$file								;
 #########################################################################
