@@ -1,9 +1,47 @@
-https://cloud.redhat.com/openshift/install
+* https://cloud.redhat.com/openshift/install
+* https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/
 
-https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/
+First you need to buy a valid publid domain in Route53:
+* https://console.aws.amazon.com/route53/home
+
+Then you need to create a new Access Key in your Security Credentials and configure your AWS Cloud9 terminal:
+```bash
+aws configure
+```
+Please remember to disable temporary credentials in AWS Cloud9.
+
+```bash
+ssh-keygen
+cat $HOME/.ssh/id_rsa.pub
+```
+Copiar la clave e importarla desde la cuenta de AWS.
+
+```bash
+eval "$(ssh-agent -s)"
+ssh-add $HOME/.ssh/id_rsa
+
+mkdir --parents $HOME/environment/openshift/install/bin && cd $HOME/environment/openshift/install/bin
+wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz
+wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-install-linux.tar.gz
+gunzip openshift-client-linux.tar.gz
+gunzip openshift-install-linux.tar.gz
+tar xf openshift-client-linux.tar
+tar xf openshift-install-linux.tar
+mkdir --parents $HOME/bin && mv kubectl oc openshift-install $HOME/bin
+
+openshift-install create install-config --dir=$HOME/environment/openshift/install
+
+```
+
+Once modified the install configuration file you can proceed with the installation:
+https://raw.githubusercontent.com/secobau/openshift/master/install/install-config.yaml
+
+```bash
+openshift-install create cluster --dir=$HOME/environment/openshift/install --log-level=debug
+```
 
 Fix Invalid Certificate in AWS:
-https://github.com/secobau/openshift/blob/master/install/fix-certificate.sh
+* https://raw.githubusercontent.com/secobau/openshift/master/install/fix-certificate.sh
 
 After running the previous script you need to open ports 80 and 1936 internally for the workers.
 You also need to open port 443 externaly (open to the world) for the workers.
@@ -17,5 +55,5 @@ oc adm policy add-scc-to-group anyuid system:authenticated
 
 Some Dockerhub images (examples: postgres and redis) require root access and have certain expectations about how volumes are owned. For these images, add the service account to the anyuid SCC.
 ```bash
-oc adm policy add-scc-to-user anyuid system:serviceaccount:myproject:mysvcacct
+oc adm policy add-scc-to-user anyuid system:serviceaccount:xxx:yyy
 ```
