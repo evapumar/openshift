@@ -16,12 +16,15 @@ aws configure
 ```
 Please remember to disable temporary credentials in AWS Cloud9.
 
+Now generate an SSH key pair.
 ```bash
 ssh-keygen
 cat $HOME/.ssh/id_rsa.pub
 ```
-Copiar la clave e importarla desde la cuenta de AWS.
 
+Copy the public key and import it into AWS EC2 dashboard.
+
+Afterwards you can proceed:
 ```bash
 eval "$(ssh-agent -s)"
 ssh-add $HOME/.ssh/id_rsa
@@ -63,12 +66,12 @@ You also need to open port 443 externaly (open to the world) for the workers.
 
 Afterwards you can enable Github OAuth.
 
-To relax the security in your cluster so that images are not forced to run as a pre-allocated UID, without granting everyone access to the privileged SCC:
+To relax the security in your cluster so that images are not forced to run as a pre-allocated UID, without granting everyone access to the privileged SCC. Better solution is to bind only ephemeral ports. Here you have the command anyway:
 ```bash
 oc adm policy add-scc-to-group anyuid system:authenticated
 ```
 
 Some Dockerhub images (examples: postgres and redis) require root access and have certain expectations about how volumes are owned. For these images, add the service account to the anyuid SCC.
 ```bash
-oc adm policy add-scc-to-user anyuid system:serviceaccount:xxx:yyy
+oc adm policy add-scc-to-user anyuid system:serviceaccount:my_project:my_svc_account
 ```
