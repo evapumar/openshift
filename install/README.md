@@ -49,7 +49,7 @@ openshift-install-4.4.5 create install-config
 ```bash
 wget https://raw.githubusercontent.com/secobau/openshift/master/install/fix-config.sh
 chmod +x fix-config.sh && ./fix-config.sh
-openshift-install create cluster --log-level=debug
+openshift-install-4.4.5 create cluster --log-level=debug
 
 ```
 
