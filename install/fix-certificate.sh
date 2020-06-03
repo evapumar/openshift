@@ -5,20 +5,22 @@
 #      SPDX-License-Identifier:  GPL-2.0-only                           #
 #########################################################################
 caps=CAPABILITY_IAM							;
-ClusterName=v4-4-5							;
-ClusterName=v4-3-22							;
-HostedZoneName=sebastian-colomar.es					;
-Identifier=d4085e20-28a4-4d28-873a-2c6e3ec04626				;
-Identifier=61f62a05-49e0-41d7-a04e-bd3fb568f74a				;
-s3name=docker-aws							;
-s3region=ap-south-1							;
+ClusterName=training                                   #PLEASE CUSTOMIZE#
+HostedZoneName=sebastian-colomar.es                    #PLEASE CUSTOMIZE#
+Identifier=3427fe23-f1c4-42ab-bd93-2e2c3433a180	       #PLEASE CUSTOMIZE#
+s3name=docker-aws				       #PLEASE CUSTOMIZE#
+s3region=ap-south-1				       #PLEASE CUSTOMIZE#
 template=cloudformation.yaml						;
 #########################################################################
+curl --output 								\
+	https://raw.githubusercontent.com/secobau/openshift/master/install/ingresscontroller-template.yaml ;
 sed --in-place s/ClusterName/$ClusterName/ 				\
 	ingresscontroller-template.yaml					;
 sed --in-place s/HostedZoneName/$HostedZoneName/			\
 	ingresscontroller-template.yaml					;
-tail -1 .openshift_install.log						; 
+#########################################################################
+#########################################################################
+#########################################################################
 oc get ingresscontrollers/default 					\
 	--namespace=openshift-ingress-operator 				\
 	--output=yaml 							\
