@@ -12,7 +12,7 @@ s3name=docker-aws				       #PLEASE CUSTOMIZE#
 s3region=ap-south-1				       #PLEASE CUSTOMIZE#
 template=cloudformation.yaml						;
 #########################################################################
-curl --output 								\
+wget	 								\
 	https://raw.githubusercontent.com/secobau/openshift/master/install/ingresscontroller-template.yaml ;
 sed --in-place s/ClusterName/$ClusterName/ 				\
 	ingresscontroller-template.yaml					;
