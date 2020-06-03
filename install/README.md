@@ -39,6 +39,8 @@ tar xf openshift-install-linux.tar
 mkdir --parents $HOME/bin && mv kubectl oc openshift-install $HOME/bin
 
 openshift-install create install-config --dir=$HOME/environment/openshift/install
+```
+```bash
 cd $HOME/environment/openshift/install
 wget https://raw.githubusercontent.com/secobau/openshift/master/install/fix-config.sh
 chmod +x fix-config.sh
