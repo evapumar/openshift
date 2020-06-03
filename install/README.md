@@ -29,23 +29,20 @@ Afterwards you can proceed:
 eval "$(ssh-agent -s)"
 ssh-add $HOME/.ssh/id_rsa
 
-mkdir --parents $HOME/environment/openshift/install/bin && cd $HOME/environment/openshift/install/bin
-wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz
-wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-install-linux.tar.gz
-gunzip openshift-client-linux.tar.gz
-gunzip openshift-install-linux.tar.gz
-tar xf openshift-client-linux.tar
-tar xf openshift-install-linux.tar
+for mode in client install
+do
+  wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-$mode-linux.tar.gz
+  gunzip openshift-$mode-linux.tar.gz && tar xf openshift-$mode-linux.tar && rm openshift-$mode-linux.tar
+done
 mkdir --parents $HOME/bin && mv kubectl oc openshift-install $HOME/bin
 
-openshift-install create install-config --dir=$HOME/environment/openshift/install
+openshift-install create install-config
+
 ```
 ```bash
-cd $HOME/environment/openshift/install
 wget https://raw.githubusercontent.com/secobau/openshift/master/install/fix-config.sh
-chmod +x fix-config.sh
-./fix-config.sh
-openshift-install create cluster --dir=$HOME/environment/openshift/install --log-level=debug
+chmod +x fix-config.sh && ./fix-config.sh
+openshift-install create cluster --log-level=debug
 
 ```
 
@@ -57,8 +54,8 @@ In order to fix the problem of the invalid certificate you need to follow these 
 ```bash
 export KUBECONFIG=$HOME/environment/openshift/install/auth/kubeconfig
 wget https://raw.githubusercontent.com/secobau/openshift/master/install/fix-certificate.sh
-chmod +x fix-certificate.sh
-./fix-certificate.sh
+chmod +x fix-certificate.sh && ./fix-certificate.sh
+
 ```
 
 After running the previous script you need to open ports 80 and 1936 internally for the workers.
