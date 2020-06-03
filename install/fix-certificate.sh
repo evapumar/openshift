@@ -82,6 +82,7 @@ VpcDefaultSecurityGroup=$( 						\
 	--query "SecurityGroups[].GroupId" 				\
 )									;
 #########################################################################
+wget https://raw.githubusercontent.com/secobau/openshift/master/install/$template ;
 s3domain=$s3name.s3.$s3region.amazonaws.com				;
 stack=$ClusterName-openshift-fix-certificate				;
 template_url=https://$s3domain/$ClusterName/$template			;
