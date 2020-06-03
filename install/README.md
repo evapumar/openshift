@@ -39,14 +39,12 @@ tar xf openshift-install-linux.tar
 mkdir --parents $HOME/bin && mv kubectl oc openshift-install $HOME/bin
 
 openshift-install create install-config --dir=$HOME/environment/openshift/install
-
-```
-
-Once modified the install configuration file you can proceed with the installation:
-https://raw.githubusercontent.com/secobau/openshift/master/install/install-config.yaml
-
-```bash
+cd $HOME/environment/openshift/install
+wget https://raw.githubusercontent.com/secobau/openshift/master/install/fix-config.sh
+chmod +x fix-config.sh
+./fix-config.sh
 openshift-install create cluster --dir=$HOME/environment/openshift/install --log-level=debug
+
 ```
 
 Now you can access your cluster in this URL:
