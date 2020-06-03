@@ -47,7 +47,7 @@ openshift-install create cluster --dir=$HOME/environment/openshift/install --log
 
 ```
 
-Now you can access your cluster in this URL:
+Now you can access your cluster in this URL (please substitute 'training' by the actual name of your cluster):
 * https://console-openshift-console.apps.training.sebastian-colomar.es
 
 In order to fix the problem of the invalid certificate you need to follow these instructions:
