@@ -19,8 +19,6 @@ sed --in-place s/ClusterName/$ClusterName/ 				\
 sed --in-place s/HostedZoneName/$HostedZoneName/			\
 	ingresscontroller-template.yaml					;
 #########################################################################
-#########################################################################
-#########################################################################
 oc get ingresscontrollers/default 					\
 	--namespace=openshift-ingress-operator 				\
 	--output=yaml 							\
