@@ -4,6 +4,12 @@
 First you need to buy a valid publid domain in Route53:
 * https://console.aws.amazon.com/route53/home
 
+Then you need to generate a valid certificate in AWS Certificate Manager:
+* https://ap-south-1.console.aws.amazon.com/acm/home
+
+You also need to create an S3 bucket:
+* https://s3.console.aws.amazon.com/s3/home
+
 Then you need to create a new Access Key in your Security Credentials and configure your AWS Cloud9 terminal:
 ```bash
 aws configure
@@ -38,6 +44,10 @@ https://raw.githubusercontent.com/secobau/openshift/master/install/install-confi
 
 ```bash
 openshift-install create cluster --dir=$HOME/environment/openshift/install --log-level=debug
+```
+
+```bash
+export KUBECONFIG=$HOME/environment/openshift/install/auth/kubeconfig
 ```
 
 Fix Invalid Certificate in AWS:
