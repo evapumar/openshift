@@ -56,6 +56,10 @@ openshift-install-4.4.5 create cluster --log-level=debug
 Now you can access your cluster in this URL (please substitute 'training' by the actual name of your cluster):
 * https://console-openshift-console.apps.training.sebastian-colomar.es
 
+```bash
+oc get secret router-certs-default -n openshift-ingress
+```
+
 In order to fix the problem of the invalid certificate you need to follow these instructions:
 
 ```bash
