@@ -54,7 +54,13 @@ openshift-install-4.4.5 create cluster --log-level=debug
 ```
 
 Now you can access your cluster in this URL (please substitute 'training' by the actual name of your cluster):
-* https://console-openshift-console.apps.training.sebastian-colomar.es
+* https://console-openshift-console.apps.$ClusterName.sebastian-colomar.es
+
+```bash
+docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certonly -n --dns-route53 --agree-tos --email $EmailAddress -d *.apps.$ClusterName.sebastian-colomar.es
+docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certificates
+
+```
 
 In order to fix the problem of the invalid certificate you need to run this script:
 ```bash
