@@ -5,9 +5,9 @@
 #      SPDX-License-Identifier:  GPL-2.0-only                           #
 #########################################################################
 caps=CAPABILITY_IAM							;
-ClusterName=openshift                                  #PLEASE CUSTOMIZE#
+ClusterName=$ClusterName						;
 HostedZoneName=sebastian-colomar.es                    #PLEASE CUSTOMIZE#
-Identifier=1b43f86b-6a6b-4724-a9d9-aa64f9c6f650	       #PLEASE CUSTOMIZE#
+Identifier=$Identifier							;
 s3name=docker-aws				       #PLEASE CUSTOMIZE#
 s3region=ap-south-1				       #PLEASE CUSTOMIZE#
 template=cloudformation.yaml						;
