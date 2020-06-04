@@ -56,32 +56,17 @@ openshift-install-4.4.5 create cluster --log-level=debug
 Now you can access your cluster in this URL (please substitute 'training' by the actual name of your cluster):
 * https://console-openshift-console.apps.training.sebastian-colomar.es
 
+In order to fix the problem of the invalid certificate you need to run this script:
 ```bash
-oc get secret router-certs-default -n openshift-ingress
-```
-
-In order to fix the problem of the invalid certificate you need to follow these instructions:
-
-```bash
-export ClusterName
-export Identifier
 export KUBECONFIG=$PWD/auth/kubeconfig
 wget https://raw.githubusercontent.com/secobau/openshift/master/install/fix-certificate.sh
 chmod +x fix-certificate.sh && ./fix-certificate.sh
 
 ```
 
-After running the previous script you need to open ports 80 and 1936 internally for the workers.
-You also need to open port 443 externaly (open to the world) for the workers.
-
 Afterwards you can enable Github OAuth.
 
-To relax the security in your cluster so that images are not forced to run as a pre-allocated UID, without granting everyone access to the privileged SCC. Better solution is to bind only ephemeral ports. Here you have the command anyway:
+To relax the security in your cluster so that images are not forced to run as a pre-allocated UID, without granting everyone access to the privileged SCC. Thouh a better solution is to bind only ephemeral ports. Here you have the command anyway:
 ```bash
 oc adm policy add-scc-to-group anyuid system:authenticated
-```
-
-Some Dockerhub images (examples: postgres and redis) require root access and have certain expectations about how volumes are owned. For these images, add the service account to the anyuid SCC.
-```bash
-oc adm policy add-scc-to-user anyuid system:serviceaccount:my_project:my_svc_account
 ```
