@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 #	./install/fix-certificate.sh
 #########################################################################
 #      Copyright (C) 2020        Sebastian Francisco Colomar Bauza      #
