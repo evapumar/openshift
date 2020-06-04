@@ -58,6 +58,9 @@ Now you can access your cluster in this URL (please substitute 'training' by the
 
 In order to fix the problem of the invalid certificate you need to run this script:
 ```bash
+export EmailAdress
+export ClusterName
+
 docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certonly -n --dns-route53 --agree-tos --email $EmailAddress -d *.apps.$ClusterName.sebastian-colomar.es
 
 docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certificates
