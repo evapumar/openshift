@@ -65,6 +65,7 @@ docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environmen
 sudo chown $USER. -R ~/environment/certs
 cp ~/environment/certs/archive/apps.v4-4-5.sebastian-colomar.es/*.pem ~/environment/openshift/install/$ClusterName.sebastian-colomar.es/tls/
 
+cd ~/environment/openshift/install/$ClusterName.sebastian-colomar.es
 export KUBECONFIG=$PWD/auth/kubeconfig
 wget https://raw.githubusercontent.com/secobau/openshift/master/install/fix-certificate.sh
 chmod +x fix-certificate.sh && ./fix-certificate.sh
