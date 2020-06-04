@@ -59,7 +59,7 @@ Now you can access your cluster in this URL (please substitute 'training' by the
 In order to fix the problem of the invalid certificate you need to follow these instructions:
 
 ```bash
-export KUBECONFIG=$HOME/environment/openshift/install/auth/kubeconfig
+export KUBECONFIG=$PWD/auth/kubeconfig
 wget https://raw.githubusercontent.com/secobau/openshift/master/install/fix-certificate.sh
 chmod +x fix-certificate.sh && ./fix-certificate.sh
 
