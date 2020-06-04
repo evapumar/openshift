@@ -63,10 +63,8 @@ docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environmen
 docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certificates
 
 sudo chown $USER. -R ~/environment/certs
-```
+cp ~/environment/certs/archive/apps.v4-4-5.sebastian-colomar.es/*.pem ~/environment/openshift/install/$ClusterName.sebastian-colomar.es/tls/
 
-Now you have to move your certificates to the installation folder and run the following script:
-```bash
 export KUBECONFIG=$PWD/auth/kubeconfig
 wget https://raw.githubusercontent.com/secobau/openshift/master/install/fix-certificate.sh
 chmod +x fix-certificate.sh && ./fix-certificate.sh
