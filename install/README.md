@@ -70,8 +70,9 @@ cp ~/environment/certs/archive/apps.v4-4-5.sebastian-colomar.es/*.pem ~/environm
 
 cd ~/environment/openshift/install/$ClusterName.sebastian-colomar.es
 export KUBECONFIG=$PWD/auth/kubeconfig
-wget https://raw.githubusercontent.com/secobau/openshift/master/install/fix-certificate.sh
-chmod +x fix-certificate.sh && ./fix-certificate.sh
+file=fix-secret.sh
+wget https://raw.githubusercontent.com/secobau/openshift/master/install/$file
+chmod +x $file && ./$file
 
 ```
 
