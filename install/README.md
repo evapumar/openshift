@@ -70,6 +70,8 @@ wget https://raw.githubusercontent.com/secobau/openshift/master/install/$file
 chmod +x $file && ./$file
 
 ```
+You can check the content of the certificate at this website:
+* https://www.sslshopper.com/certificate-decoder.html
 
 Afterwards you can enable Github OAuth.
 
