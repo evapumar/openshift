@@ -109,3 +109,7 @@ aws cloudformation create-stack                                         \
 	--output                                                        \
 		text                                                    \
 #########################################################################
+echo After running the previous script you need to open ports 80 and 1936
+echo internally for the workers. You also need to open port 443 externaly
+echo (open to the world) for the workers.
+#########################################################################
