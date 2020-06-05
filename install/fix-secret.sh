@@ -1,5 +1,5 @@
 #!/bin/bash
-#	./install/fix-certificate.sh
+#	./install/fix-secret.sh
 #########################################################################
 #      Copyright (C) 2020        Sebastian Francisco Colomar Bauza      #
 #      SPDX-License-Identifier:  GPL-2.0-only                           #
