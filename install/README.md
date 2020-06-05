@@ -62,11 +62,12 @@ export EmailAdress
 export ClusterName
 
 docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certonly -n --dns-route53 --agree-tos --email $EmailAddress -d *.apps.$ClusterName.sebastian-colomar.es
+docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certonly -n --dns-route53 --agree-tos --email $EmailAddress -d *.$ClusterName.sebastian-colomar.es
 
 docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certificates
 
 sudo chown $USER. -R ~/environment/certs
-cp ~/environment/certs/archive/apps.v4-4-5.sebastian-colomar.es/*.pem ~/environment/openshift/install/$ClusterName.sebastian-colomar.es/tls/
+cp ~/environment/certs/archive/apps.$ClusterName.sebastian-colomar.es/*.pem ~/environment/openshift/install/$ClusterName.sebastian-colomar.es/tls/
 
 cd ~/environment/openshift/install/$ClusterName.sebastian-colomar.es
 export KUBECONFIG=$PWD/auth/kubeconfig
