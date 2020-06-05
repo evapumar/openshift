@@ -4,8 +4,8 @@
 #      Copyright (C) 2020        Sebastian Francisco Colomar Bauza      #
 #      SPDX-License-Identifier:  GPL-2.0-only                           #
 #########################################################################
-crt=tls/fullchain1.pem							;
-key=tls/privkey1.pem							;
+crt=tls/fullchain.pem							;
+key=tls/privkey.pem							;
 crt=$( cat $crt | base64 --wrap 0 )					;
 key=$( cat $key | base64 --wrap 0 )					;
 kubectl get secret router-certs-default 				\
