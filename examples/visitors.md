@@ -1,1 +1,0 @@
-* https://github.com/kubernetes-operators-book/chapters/tree/master/ch05
