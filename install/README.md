@@ -23,27 +23,29 @@ Afterwards you can proceed:
 eval "$(ssh-agent -s)"
 ssh-add $HOME/.ssh/id_rsa
 
+version=4.4.9
 for mode in client install
 do
-  wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.4.5/openshift-$mode-linux-4.4.5.tar.gz
-  gunzip openshift-$mode-linux-4.4.5.tar.gz
-  tar xf openshift-$mode-linux-4.4.5.tar
-  rm openshift-$mode-linux-4.4.5.tar
+  wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/$version/openshift-$mode-linux-$version.tar.gz
+  gunzip openshift-$mode-linux-$version.tar.gz
+  tar xf openshift-$mode-linux-$version.tar
+  rm openshift-$mode-linux-$version.tar
 done
 mkdir --parents $HOME/bin
 for binary in kubectl oc
 do
   mv $binary $HOME/bin
 done
-mv openshift-install $HOME/bin/openshift-install-4.4.5
+mv openshift-install $HOME/bin/openshift-install-$version
 
-openshift-install-4.4.5 create install-config
+openshift-install-$version create install-config
 
 ```
 ```bash
+version=4.4.9
 wget https://raw.githubusercontent.com/secobau/openshift/master/install/fix-config.sh
 chmod +x fix-config.sh && ./fix-config.sh
-openshift-install-4.4.5 create cluster --log-level=debug
+openshift-install-$version create cluster --log-level=debug
 
 ```
 
