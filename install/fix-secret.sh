@@ -6,15 +6,17 @@
 #########################################################################
 crt=tls/fullchain.pem							;
 key=tls/privkey.pem							;
+namespace=openshift-ingress						;
+secret=router-certs-default						;
 crt=$( cat $crt | base64 --wrap 0 )					;
 key=$( cat $key | base64 --wrap 0 )					;
-kubectl get secret router-certs-default 				\
-	--namespace	openshift-ingress				\
+kubectl get secret $secret		 				\
+	--namespace	$namespace					\
 	--output	yaml						\
-	1>		router-certs-custom				;
-sed --in-place s/'  tls.crt: .*$'/"  tls.crt: $crt"/ router-certs-custom;
-sed --in-place s/'  tls.key: .*$'/"  tls.key: $key"/ router-certs-custom;
-kubectl delete secret router-certs-default --namespace openshift-ingress;
-kubectl apply --filename router-certs-custom				;
-kubectl delete pod --all --namespace openshift-ingress			;
+	1>		$secret						;
+sed --in-place s/'  tls.crt: .*$'/"  tls.crt: $crt"/ $secret		;
+sed --in-place s/'  tls.key: .*$'/"  tls.key: $key"/ $secret		;
+kubectl delete secret $secret --namespace $namespace			;
+kubectl apply --filename $secret					;
+kubectl delete pod --all --namespace $namespace				;
 #########################################################################
