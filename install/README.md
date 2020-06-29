@@ -38,10 +38,6 @@ do
 done
 mv openshift-install $HOME/bin/openshift-install-$version
 
-
-dir="~/environment/openshift/install/$ClusterName.$DomainName"
-test -d $dir || mkdir --parents $dir
-cd $dir
 openshift-install-$version create install-config
 
 ```
@@ -63,6 +59,9 @@ docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environmen
 docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certonly -n --dns-route53 --agree-tos --email $EmailAddress -d *.$ClusterName.$DomainName
 
 docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certificates
+
+dir="~/environment/openshift/install/$ClusterName.$DomainName"
+test -d $dir || mkdir --parents $dir
 
 sudo chown $USER. -R ~/environment/certs
 cp ~/environment/certs/live/apps.$ClusterName.$DomainName/*.pem ~/environment/openshift/install/$ClusterName.$DomainName/tls/
