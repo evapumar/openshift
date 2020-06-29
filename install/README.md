@@ -60,7 +60,7 @@ docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environmen
 
 docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certificates
 
-dir="~/environment/openshift/install/$ClusterName.$DomainName"
+dir="$HOME/environment/openshift/install/$ClusterName.$DomainName"
 test -d $dir || mkdir --parents $dir
 
 sudo chown $USER. -R ~/environment/certs
