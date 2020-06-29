@@ -38,6 +38,10 @@ do
 done
 mv openshift-install $HOME/bin/openshift-install-$version
 
+
+dir="~/environment/openshift/install/$ClusterName.$DomainName"
+test -d $dir || mkdir --parents $dir
+cd $dir
 openshift-install-$version create install-config
 
 ```
