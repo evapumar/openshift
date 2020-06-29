@@ -38,6 +38,12 @@ do
 done
 mv openshift-install $HOME/bin/openshift-install-$version
 
+export EmailAddress=sebastian.colomar@gmail.com
+export ClusterName=openshift
+export DomainName=sebastian-colomar.es
+dir="$HOME/environment/openshift/install/$ClusterName.$DomainName"
+test -d $dir || mkdir --parents $dir
+cd $dir
 openshift-install-$version create install-config
 
 ```
