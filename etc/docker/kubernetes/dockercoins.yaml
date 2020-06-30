@@ -6,7 +6,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: rng
-  namespace: demo
+  namespace: dockercoins-x
 spec:
   selector:
     matchLabels:
@@ -25,7 +25,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hasher
-  namespace: demo
+  namespace: dockercoins-x
 spec:
   replicas: 1
   selector:
@@ -45,7 +45,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis
-  namespace: demo
+  namespace: dockercoins-x
 spec:
   replicas: 1
   selector:
@@ -65,7 +65,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webui
-  namespace: demo
+  namespace: dockercoins-x
 spec:
   replicas: 1
   selector:
@@ -85,7 +85,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: worker
-  namespace: demo
+  namespace: dockercoins-x
 spec:
   replicas: 1
   selector:
@@ -105,7 +105,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: hasher
-  namespace: demo
+  namespace: dockercoins-x
 spec:
   podSelector:
     matchLabels:
@@ -116,7 +116,7 @@ spec:
         -
           namespaceSelector:
             matchLabels:
-              namespace: demo
+              namespace: dockercoins-x
         -
           podSelector:
             matchLabels:
@@ -130,7 +130,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: redis
-  namespace: demo
+  namespace: dockercoins-x
 spec:
   podSelector:
     matchLabels:
@@ -141,7 +141,7 @@ spec:
         -
           namespaceSelector:
             matchLabels:
-              namespace: demo
+              namespace: dockercoins-x
         -
           podSelector:
             matchLabels:
@@ -159,7 +159,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: rng
-  namespace: demo
+  namespace: dockercoins-x
 spec:
   podSelector:
     matchLabels:
@@ -170,7 +170,7 @@ spec:
         -
           namespaceSelector:
             matchLabels:
-              namespace: demo
+              namespace: dockercoins-x
         -
           podSelector:
             matchLabels:
@@ -184,7 +184,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: worker
-  namespace: demo
+  namespace: dockercoins-x
 spec:
   podSelector:
     matchLabels:
@@ -196,7 +196,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: hasher
-  namespace: demo
+  namespace: dockercoins-x
 spec:
   ports:
   -
@@ -208,7 +208,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: redis
-  namespace: demo
+  namespace: dockercoins-x
 spec:
   ports:
   -
@@ -220,7 +220,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: rng
-  namespace: demo
+  namespace: dockercoins-x
 spec:
   ports:
   -
@@ -232,7 +232,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: webui
-  namespace: demo
+  namespace: dockercoins-x
 spec:
   ports:
   -
@@ -244,9 +244,9 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: dockercoins
-  namespace: demo
+  namespace: dockercoins-x
 spec:
-  host: dockercoins.apps.openshift.sebastian-colomar.com
+  host: dockercoins-x.apps.openshift.sebastian-colomar.com
   to:
     kind: Service
     name: webui
