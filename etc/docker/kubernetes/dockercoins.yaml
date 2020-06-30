@@ -246,7 +246,7 @@ metadata:
   name: dockercoins
   namespace: dockercoins-x
 spec:
-  host: dockercoins-x.apps.openshift.sebastian-colomar.com
+  host: dockercoins-x.apps.openshift.sebastian-colomar.es
   to:
     kind: Service
     name: webui
