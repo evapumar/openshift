@@ -21,7 +21,6 @@
    1. https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
    1. https://coreos.com/operators/
    1. https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
-   1. https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/
 1. https://docs.openshift.com/container-platform/4.4/web_console/web-console.html
 1. https://docs.openshift.com/container-platform/4.4/web_console/using-dashboard-to-get-cluster-information.html
 1. https://docs.openshift.com/container-platform/4.4/cli_reference/openshift_cli/getting-started-cli.html
