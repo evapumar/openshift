@@ -15,7 +15,7 @@ mkdir $HOME/bin && mv kubectl oc $HOME/bin && oc status
 * https://github.com/secobau/openshift
  
 ### OPENSHIFT
-* https://console-openshift-console.apps.v4-4-5.sebastian-colomar.es
+* https://console-openshift-console.apps.openshift.sebastian-colomar.es
  
 ### DOCKERFILE
 * https://github.com/secobau/php/blob/rc-apache/Dockerfile
