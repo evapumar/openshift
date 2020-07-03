@@ -23,7 +23,7 @@ Afterwards you can proceed:
 eval "$(ssh-agent -s)"
 ssh-add $HOME/.ssh/id_rsa
 
-version=4.4.9
+version=4.4.10
 for mode in client install
 do
   wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/$version/openshift-$mode-linux-$version.tar.gz
@@ -48,7 +48,6 @@ openshift-install-$version create install-config
 
 ```
 ```bash
-version=4.4.9
 wget https://raw.githubusercontent.com/secobau/openshift/master/install/fix-config.sh
 chmod +x fix-config.sh && ./fix-config.sh
 openshift-install-$version create cluster --log-level=debug
