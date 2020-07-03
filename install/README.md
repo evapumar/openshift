@@ -83,12 +83,6 @@ docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environmen
 sudo chown $USER. -R ~/environment/certs
 cp ~/environment/certs/live/apps.$ClusterName.$DomainName/*.pem ~/environment/openshift/install/$ClusterName.$DomainName/tls/
 
-cd ~/environment/openshift/install/$ClusterName.$DomainName
-export KUBECONFIG=$PWD/auth/kubeconfig
-file=fix-secret.sh
-wget https://raw.githubusercontent.com/secobau/openshift/master/install/$file
-chmod +x $file && ./$file
-
 
 ```
 You can check the content of the certificate at this website:
