@@ -7,6 +7,8 @@ First you need to buy a valid publid domain in Route53:
 Then you need to create a new Access Key in your Security Credentials and configure your AWS Cloud9 terminal:
 ```bash
 aws configure
+
+
 ```
 Please remember to disable temporary credentials in AWS Cloud9.
 
@@ -14,6 +16,8 @@ Now generate an SSH key pair.
 ```bash
 ssh-keygen
 cat $HOME/.ssh/id_rsa.pub
+
+
 ```
 
 Copy the public key and import it into AWS EC2 dashboard.
@@ -38,11 +42,13 @@ do
 done
 mv openshift-install $HOME/bin/openshift-install-$version
 
+
 ```
 Now you introduce your choice for the name and domain of the cluster:
 ```bash
 export ClusterName=openshift
 export DomainName=sebastian-colomar.es
+
 
 ```
 Now you create a configuration file template to be later modified:
@@ -51,6 +57,7 @@ dir="$HOME/environment/openshift/install/$ClusterName.$DomainName"
 test -d $dir || mkdir --parents $dir
 cd $dir
 openshift-install-$version create install-config
+
 
 ```
 The following script will modify the EC2 instance type so as to choose the cheapest possible type enough to correctly set up the cluster:
@@ -63,6 +70,7 @@ chmod +x fix-config.sh && ./fix-config.sh
 Now you can create the cluster in AWS:
 ```BASH
 openshift-install-$version create cluster --log-level=debug
+
 
 ```
 
@@ -84,6 +92,7 @@ file=fix-secret.sh
 wget https://raw.githubusercontent.com/secobau/openshift/master/install/$file
 chmod +x $file && ./$file
 
+
 ```
 You can check the content of the certificate at this website:
 * https://www.sslshopper.com/certificate-decoder.html
@@ -93,4 +102,6 @@ Afterwards you can enable Github OAuth.
 To relax the security in your cluster so that images are not forced to run as a pre-allocated UID, without granting everyone access to the privileged SCC (a better solution is to bind only ephemeral ports in your application):
 ```bash
 oc adm policy add-scc-to-group anyuid system:authenticated
+
+
 ```
