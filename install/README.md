@@ -47,6 +47,7 @@ cd $dir
 openshift-install-$version create install-config
 
 ```
+The following script will modify the EC2 instance type so as to choose the cheapest possible type enough to correctly set up the cluster:
 ```bash
 wget https://raw.githubusercontent.com/secobau/openshift/master/install/fix-config.sh
 chmod +x fix-config.sh && ./fix-config.sh
