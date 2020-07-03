@@ -51,6 +51,10 @@ The following script will modify the EC2 instance type so as to choose the cheap
 ```bash
 wget https://raw.githubusercontent.com/secobau/openshift/master/install/fix-config.sh
 chmod +x fix-config.sh && ./fix-config.sh
+
+```
+Now you can create the cluster in AWS:
+```BASH
 openshift-install-$version create cluster --log-level=debug
 
 ```
