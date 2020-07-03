@@ -1,7 +1,5 @@
 In order to install a new Red Hat Openshift cluster in AWS please follow the steps in the precise order:
-
 * https://cloud.redhat.com/openshift/install
-* https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/
 
 First you need to buy a valid publid domain in Route53:
 * https://console.aws.amazon.com/route53/home
