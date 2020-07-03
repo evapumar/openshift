@@ -38,9 +38,15 @@ do
 done
 mv openshift-install $HOME/bin/openshift-install-$version
 
-export EmailAddress=sebastian.colomar@gmail.com
+```
+Now you introduce your choice for the name and domain of the cluster:
+```bash
 export ClusterName=openshift
 export DomainName=sebastian-colomar.es
+
+```
+Now you create a configuration file template to be later modified:
+```bash
 dir="$HOME/environment/openshift/install/$ClusterName.$DomainName"
 test -d $dir || mkdir --parents $dir
 cd $dir
@@ -62,16 +68,11 @@ openshift-install-$version create cluster --log-level=debug
 In order to fix the problem of the invalid certificate you need to run this script:
 ```bash
 export EmailAddress=sebastian.colomar@gmail.com
-export ClusterName=openshift
-export DomainName=sebastian-colomar.es
 
 docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certonly -n --dns-route53 --agree-tos --email $EmailAddress -d *.apps.$ClusterName.$DomainName
 docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certonly -n --dns-route53 --agree-tos --email $EmailAddress -d *.$ClusterName.$DomainName
 
 docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certificates
-
-dir="$HOME/environment/openshift/install/$ClusterName.$DomainName"
-test -d $dir || mkdir --parents $dir
 
 sudo chown $USER. -R ~/environment/certs
 cp ~/environment/certs/live/apps.$ClusterName.$DomainName/*.pem ~/environment/openshift/install/$ClusterName.$DomainName/tls/
