@@ -1,7 +1,7 @@
 In order to install a new Red Hat Openshift cluster in AWS please follow the steps in the precise order:
 * https://cloud.redhat.com/openshift/install
 
-First you need to buy a valid publid domain in Route53:
+First you need to buy a valid public domain in Route53:
 * https://console.aws.amazon.com/route53/home
 
 Then you need to create a new Access Key in your Security Credentials and configure your AWS Cloud9 terminal:
