@@ -85,6 +85,9 @@ cp ~/environment/certs/live/apps.$ClusterName.$DomainName/*.pem ~/environment/op
 
 
 ```
+In order to substitute the self-signed certificate by a valid one:
+https://docs.openshift.com/container-platform/4.4/authentication/certificates/replacing-default-ingress-certificate.html
+
 You can check the content of the certificate at this website:
 * https://www.sslshopper.com/certificate-decoder.html
 
