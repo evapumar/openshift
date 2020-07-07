@@ -1,4 +1,4 @@
-In order to install a new Red Hat Openshift cluster in AWS please follow the steps in the precise order:
+In order to install a new Red Hat Openshift cluster in AWS please follow these steps in the precise order:
 * https://cloud.redhat.com/openshift/install
 
 Then you need to create a new Access Key in your Security Credentials and configure your AWS Cloud9 terminal:
