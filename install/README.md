@@ -97,7 +97,7 @@ openshift-install-$version create cluster --log-level=debug
 
 ```
 
-In order to fix the problem of the invalid certificate you need to run this script:
+If you need to generate LetsEncrypt certificates you can run this script:
 ```bash
 export EmailAddress=sebastian.colomar@gmail.com
 
