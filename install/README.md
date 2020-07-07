@@ -72,7 +72,7 @@ sed --in-place s/External/Internal/ install-config.yaml
 
 
 ```
-Be sure to enable the following features in the VPC configuration:
+Be sure to enable the following features in the VPC configuration in case your cluster is private:
 ```bash
 DNS resolution Enabled
 DNS hostnames  Enabled
