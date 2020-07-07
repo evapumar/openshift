@@ -74,6 +74,17 @@ sed --in-place s/External/Internal/ install-config.yaml
 
 
 ```
+In case you would like to install your cluster in an already existing VPC then you would need to add the subnet IDs to the platform.aws.subnets field:
+```bash
+platform:
+  aws:
+    subnets: 
+    - subnet-1
+    - subnet-2
+    - subnet-3
+    
+    
+```    
 Now you can create the cluster in AWS:
 ```BASH
 openshift-install-$version create cluster --log-level=debug
