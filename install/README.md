@@ -79,7 +79,7 @@ DNS hostnames  Enabled
 
 
 ```
-In case you would like to install your cluster in an already existing VPC then you would need to add the subnet IDs to the platform.aws.subnets field:
+In case you want to install your cluster in an already existing VPC then you will need to add the subnet IDs to the platform.aws.subnets field:
 ```bash
 platform:
   aws:
