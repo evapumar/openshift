@@ -22,8 +22,6 @@ version=4.4.10
 
 
 ```
-Copy the public key and import it into AWS EC2 dashboard.
-
 Afterwards you can proceed:
 ```bash
 eval "$(ssh-agent -s)"
