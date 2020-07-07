@@ -97,7 +97,7 @@ openshift-install-$version create cluster --log-level=debug
 
 ```
 There will be a moment that the install process will be blocked because there is no DNS resolution of the API URL. 
-You need then to create another Cloud9 environment in a public subnet inside the VPC where your private cluster is located.
+You will then need to create another Cloud9 environment in a public subnet inside the VPC where your private cluster is located.
 You will need to import into this new environment the SSH key pair used in the previous environment as well as the folder with the Openshift install files.
 You can then start again the install process after removing the terraform.tfstate file.
 
