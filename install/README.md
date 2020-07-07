@@ -68,6 +68,12 @@ chmod +x fix-config.sh && ./fix-config.sh
 
 
 ```
+If you wish your cluster to be private and not accessible from the external network:
+```bash
+sed --in-place s/External/Internal/ install-config.yaml
+
+
+```
 Now you can create the cluster in AWS:
 ```BASH
 openshift-install-$version create cluster --log-level=debug
