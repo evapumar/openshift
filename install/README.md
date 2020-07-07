@@ -72,6 +72,13 @@ sed --in-place s/External/Internal/ install-config.yaml
 
 
 ```
+Be sure to enable the following features in the VPC configuration:
+```bash
+DNS resolution Enabled
+DNS hostnames  Enabled
+
+
+```
 In case you would like to install your cluster in an already existing VPC then you would need to add the subnet IDs to the platform.aws.subnets field:
 ```bash
 platform:
