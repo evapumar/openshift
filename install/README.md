@@ -16,7 +16,12 @@ cat $HOME/.ssh/id_rsa.pub
 
 
 ```
+Choose a version number:
+```bash
+version=4.4.10
 
+
+```
 Copy the public key and import it into AWS EC2 dashboard.
 
 Afterwards you can proceed:
@@ -24,7 +29,6 @@ Afterwards you can proceed:
 eval "$(ssh-agent -s)"
 ssh-add $HOME/.ssh/id_rsa
 
-version=4.4.10
 for mode in client install
 do
   wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/$version/openshift-$mode-linux-$version.tar.gz
