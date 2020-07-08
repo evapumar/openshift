@@ -12,7 +12,6 @@ Please remember to disable temporary credentials in AWS Cloud9.
 Now generate an SSH key pair.
 ```bash
 ssh-keygen
-cat $HOME/.ssh/id_rsa.pub
 
 
 ```
