@@ -1,7 +1,11 @@
 In order to install a new Red Hat Openshift cluster in AWS please follow these steps in the precise order:
 * https://cloud.redhat.com/openshift/install
 
-Then you need to create a new Access Key in your Security Credentials and configure your AWS Cloud9 terminal:
+All the steps will be performed from an AWS Cloud9 terminal with enough privileges (AdministratorAccess will work).
+
+If you are going to create a cluster in an already existing VPC then you need to create your AWS Cloud9 environment inside a public subnet of your VPC.
+
+Now you need to create a new Access Key in your Security Credentials and configure your AWS Cloud9 terminal:
 ```bash
 aws configure
 
@@ -105,9 +109,10 @@ openshift-install-$version create cluster --log-level=debug
 
 
 ```
-There will be a moment that the install process will be blocked because there is no DNS resolution of the API URL. 
-You will then need to create another Cloud9 environment in a public subnet inside the VPC where your private cluster is located.
+If the install process is blocked because there is no DNS resolution of the API URL then you will then need to create another Cloud9 environment in a public subnet inside the VPC where your private cluster is located.
+
 You will need to import into this new environment the SSH key pair used in the previous environment as well as the folder with the Openshift install files.
+
 You can then start again the install process after removing the terraform.tfstate file.
 
 If you need to generate LetsEncrypt certificates you can run this script:
