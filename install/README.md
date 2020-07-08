@@ -84,12 +84,22 @@ In case you want to install your cluster in an already existing VPC then you wil
 platform:
   aws:
     subnets: 
-    - subnet-1
-    - subnet-2
-    - subnet-3
+    - subnet-111
+    - subnet-222
+    - subnet-333
     
     
 ```    
+In case of using an already existing VPC you will also need to add the CIDR blocks for the machine network which must coincide with the corresponding CIDR blocks for the private subnets:
+```bash
+networking:
+  machineNetwork:
+  - cidr: 10.0.1.0/24	
+  - cidr: 10.0.3.0/24	
+  - cidr: 10.0.5.0/24	
+
+
+```
 Now you can create the cluster in AWS:
 ```BASH
 openshift-install-$version create cluster --log-level=debug
