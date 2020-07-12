@@ -86,9 +86,9 @@ In case you want to install your cluster in an already existing VPC then you wil
 platform:
   aws:
     subnets: 
-    - subnet-111
-    - subnet-222
-    - subnet-333
+    - subnet-private111
+    - subnet-private222
+    - subnet-private333
     
     
 ```    
