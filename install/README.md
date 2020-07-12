@@ -179,9 +179,6 @@ In order to substitute the self-signed certificate by a valid one:
   
   
   ```
-  
-You can check the content of the certificate at this website:
-* https://www.sslshopper.com/certificate-decoder.html
 
 Now you can enable Github OAuth.
 
