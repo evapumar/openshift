@@ -118,6 +118,14 @@ If you have correctly created you AWS Cloud9 environment inside a public subnet 
 You will need to import into this new environment the SSH key pair used in the previous environment as well as the folder with the Openshift install files.
 You can then start again the install process after removing the terraform.tfstate file.
 
+The installation process will eventually finish successfully.
+
+To access the cluster as the system:admin user when using 'oc', run the following command:
+```bash
+export KUBECONFIG=$dir/auth/kubeconfig
+
+
+```
 If you need to generate LetsEncrypt certificates you can run this script:
 ```bash
 export EmailAddress=sebastian.colomar@gmail.com
