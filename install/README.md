@@ -126,55 +126,6 @@ export KUBECONFIG=$dir/auth/kubeconfig
 
 
 ```
-If you need to generate LetsEncrypt certificates you can run this script:
-```bash
-export EmailAddress=sebastian.colomar@gmail.com
-
-docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certonly -n --dns-route53 --agree-tos --email $EmailAddress -d *.apps.$ClusterName.$DomainName
-
-docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certonly -n --dns-route53 --agree-tos --email $EmailAddress -d *.$ClusterName.$DomainName
-
-docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certificates
-
-sudo chown $USER. -R ~/environment/certs
-cp ~/environment/certs/live/apps.$ClusterName.$DomainName/*.pem ~/environment/openshift/install/$ClusterName.$DomainName/tls/
-
-
-```
-In order to substitute the self-signed certificate by a valid one:
-* https://docs.openshift.com/container-platform/4.4/authentication/certificates/replacing-default-ingress-certificate.html
-  1. Create a ConfigMap that includes the certificate authority used to sign the new certificate:
-  ```bash
-  oc create configmap custom-ca --from-file=ca-bundle.crt=$dir/tls/chain.pem -n openshift-config
-
-
-  ```
-  2. Update the cluster-wide proxy configuration with the newly created ConfigMap:
-  ```bash
-  oc patch proxy/cluster --type=merge --patch='{"spec":{"trustedCA":{"name":"custom-ca"}}}
-
-
-  ```
-  3. Create a secret that contains the wildcard certificate and key:
-  ```bash
-  oc create secret tls certificate --cert=$dir/tls/cert.pem --key=$dir/tls/privkey.pem -n openshift-ingress
-
-
-  ```
-  4. Update the Ingress Controller configuration with the newly created secret:
-  ```bash
-  oc patch ingresscontroller.operator default --type=merge -p '{"spec":{"defaultCertificate": {"name": "certificate"}}}' -n openshift-ingress-operator
-
-
-  ```
-
-* https://docs.openshift.com/container-platform/4.4/authentication/certificates/api-server.html
-
-You can check the content of the certificate at this website:
-* https://www.sslshopper.com/certificate-decoder.html
-
-Afterwards you can enable Github OAuth.
-
 To relax the security in your cluster so that images are not forced to run as a pre-allocated UID, without granting everyone access to the privileged SCC (a better solution is to bind only ephemeral ports in your application):
 ```bash
 oc adm policy add-scc-to-group anyuid system:authenticated
