@@ -5,13 +5,12 @@ All the steps will be performed from an AWS Cloud9 terminal with enough privileg
 
 If you are going to create a cluster in an already existing VPC then you need to create your AWS Cloud9 environment inside a public subnet of your VPC.
 
-Now you need to create a new Access Key in your Security Credentials and configure your AWS Cloud9 terminal:
+Disable AWS managed temporary credentials in AWS Cloud9 settings. Now you need to create a new Access Key in your AWS IAM Security Credentials and then configure your AWS Cloud9 terminal:
 ```bash
 aws configure
 
 
 ```
-Please remember to disable temporary credentials in AWS Cloud9.
 
 Now generate an SSH key pair.
 ```bash
