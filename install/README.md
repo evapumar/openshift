@@ -143,30 +143,30 @@ cp ~/environment/certs/live/apps.$ClusterName.$DomainName/*.pem ~/environment/op
 ```
 In order to substitute the self-signed certificate by a valid one:
 * https://docs.openshift.com/container-platform/4.4/authentication/certificates/replacing-default-ingress-certificate.html
-1. Create a ConfigMap that includes the certificate authority used to sign the new certificate:
-```bash
-oc create configmap custom-ca --from-file=ca-bundle.crt=$dir/tls/chain.pem -n openshift-config
+  1. Create a ConfigMap that includes the certificate authority used to sign the new certificate:
+  ```bash
+  oc create configmap custom-ca --from-file=ca-bundle.crt=$dir/tls/chain.pem -n openshift-config
 
 
-```
-1. Update the cluster-wide proxy configuration with the newly created ConfigMap:
-```bash
-oc patch proxy/cluster --type=merge --patch='{"spec":{"trustedCA":{"name":"custom-ca"}}}
+  ```
+  2. Update the cluster-wide proxy configuration with the newly created ConfigMap:
+  ```bash
+  oc patch proxy/cluster --type=merge --patch='{"spec":{"trustedCA":{"name":"custom-ca"}}}
 
 
-```
-1. Create a secret that contains the wildcard certificate and key:
-```bash
-oc create secret tls certificate --cert=$dir/tls/cert.pem --key=$dir/tls/privkey.pem -n openshift-ingress
+  ```
+  3. Create a secret that contains the wildcard certificate and key:
+  ```bash
+  oc create secret tls certificate --cert=$dir/tls/cert.pem --key=$dir/tls/privkey.pem -n openshift-ingress
 
 
-```
-1. Update the Ingress Controller configuration with the newly created secret:
-```bash
-oc patch ingresscontroller.operator default --type=merge -p '{"spec":{"defaultCertificate": {"name": "certificate"}}}' -n openshift-ingress-operator
+  ```
+  4. Update the Ingress Controller configuration with the newly created secret:
+  ```bash
+  oc patch ingresscontroller.operator default --type=merge -p '{"spec":{"defaultCertificate": {"name": "certificate"}}}' -n openshift-ingress-operator
 
 
-```
+  ```
 
 * https://docs.openshift.com/container-platform/4.4/authentication/certificates/api-server.html
 
