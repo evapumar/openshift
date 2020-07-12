@@ -48,7 +48,7 @@ mv openshift-install $HOME/bin/openshift-install-$version
 ```
 Now you introduce your choice for the name and domain of the cluster:
 ```bash
-export ClusterName=openshift
+export ClusterName=openshift-internal
 export DomainName=sebastian-colomar.com
 
 
