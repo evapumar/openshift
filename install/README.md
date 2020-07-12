@@ -68,12 +68,6 @@ chmod +x fix-config.sh && ./fix-config.sh
 
 
 ```
-If you wish your cluster to be private and not accessible from the external network:
-```bash
-sed --in-place s/External/Internal/ install-config.yaml
-
-
-```
 Be sure to enable the following features in the VPC configuration in case your cluster is private:
 ```bash
 DNS resolution Enabled
@@ -114,10 +108,6 @@ openshift-install-$version create cluster --log-level=debug
 
 
 ```
-If you have correctly created you AWS Cloud9 environment inside a public subnet of the already existing VPC then it should not be the case but if the install process is blocked because there is no DNS resolution of the API URL then you will need to create another Cloud9 environment inside a public subnet in the VPC where your private cluster is being installed.
-You will need to import into this new environment the SSH key pair used in the previous environment as well as the folder with the Openshift install files.
-You can then start again the install process after removing the terraform.tfstate file.
-
 The installation process will eventually finish successfully.
 
 To access the cluster as the system:admin user when using 'oc', run the following command:
