@@ -104,7 +104,7 @@ cp install-config.yaml install-config.yaml.$( date +%F_%H%M )
 ```
 Now you can create the cluster in AWS:
 ```BASH
-openshift-install-$version create cluster --log-level=debug
+openshift-install-$version create cluster --dir $dir --log-level debug
 
 
 ```
