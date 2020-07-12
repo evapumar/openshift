@@ -89,13 +89,11 @@ platform:
     
     
 ```    
-In case of using an already existing VPC you will also need to add the CIDR blocks for the machine network which must coincide with the corresponding CIDR blocks for the private subnets:
+In case of using an already existing VPC you will also need to add the CIDR block for the machine network which must include the corresponding CIDR blocks for the private and public subnets:
 ```bash
 networking:
   machineNetwork:
-  - cidr: 10.0.1.0/24	
-  - cidr: 10.0.3.0/24	
-  - cidr: 10.0.5.0/24	
+  - cidr: 10.0.0.0/16	
 
 
 ```
