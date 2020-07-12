@@ -117,21 +117,6 @@ export KUBECONFIG=$dir/auth/kubeconfig
 
 
 ```
-If you need to generate LetsEncrypt certificates you can run this script:
-```bash
-export EmailAddress=sebastian.colomar@gmail.com
-
-docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certonly -n --dns-route53 --agree-tos --email $EmailAddress -d *.apps.$ClusterName.$DomainName
-
-docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certonly -n --dns-route53 --agree-tos --email $EmailAddress -d *.$ClusterName.$DomainName
-
-docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certificates
-
-sudo chown $USER. -R ~/environment/certs
-cp ~/environment/certs/live/apps.$ClusterName.$DomainName/*.pem ~/environment/openshift/install/$ClusterName.$DomainName/tls/
-
-
-```
 In order to substitute the self-signed certificate by a valid one:
 * https://docs.openshift.com/container-platform/4.4/authentication/certificates/replacing-default-ingress-certificate.html
   
@@ -175,7 +160,7 @@ In order to substitute the self-signed certificate by a valid one:
   1. If you need to generate LetsEncrypt certificates you can run this script:
   ```bash
   export EmailAddress=sebastian.colomar@gmail.com
-  docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certonly -n --dns-route53 --agree-tos --email $EmailAddress -d *.$ClusterName.$DomainName
+  docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certonly -n --dns-route53 --agree-tos --email $EmailAddress -d api.$ClusterName.$DomainName
   docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/environment/certs:/etc/letsencrypt certbot/dns-route53 certificates
   sudo chown $USER. -R ~/environment/certs
   cp ~/environment/certs/live/$ClusterName.$DomainName/*.pem ~/environment/openshift/install/$ClusterName.$DomainName/tls/
