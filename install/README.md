@@ -108,7 +108,7 @@ openshift-install-$version create cluster --log-level=debug
 
 
 ```
-If the install process is blocked because there is no DNS resolution of the API URL then you will then need to create another Cloud9 environment in a public subnet inside the VPC where your private cluster is located.
+If you have correctly created you AWS Cloud9 environment inside a public subnet of the already existing VPC then it should not be the case but if the install process is blocked because there is no DNS resolution of the API URL then you will need to create another Cloud9 environment in a public subnet inside the VPC where your private cluster is located.
 
 You will need to import into this new environment the SSH key pair used in the previous environment as well as the folder with the Openshift install files.
 
