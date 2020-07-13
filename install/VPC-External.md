@@ -58,13 +58,13 @@ Now you create a configuration file template to be later modified:
 ```bash
 dir="$HOME/environment/openshift/install/$ClusterName.$DomainName"
 test -d $dir || mkdir --parents $dir
-cd $dir
-openshift-install-$version create install-config
+openshift-install-$version create install-config --dir $dir
 
 
 ```
 The following script will modify the EC2 instance type so as to choose the cheapest possible type but big enough to correctly set up the cluster:
 ```bash
+cd $dir
 wget https://raw.githubusercontent.com/secobau/openshift/master/install/fix-config.sh
 chmod +x fix-config.sh && ./fix-config.sh
 
@@ -101,7 +101,7 @@ networking:
 ```
 It is a good idea to make a copy of your configuration file:
 ```bash
-cp install-config.yaml install-config.yaml.$( date +%F_%H%M )
+cp $dir/install-config.yaml $dir/install-config.yaml.$( date +%F_%H%M )
 
 
 ```
