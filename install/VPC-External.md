@@ -145,7 +145,7 @@ In order to substitute the self-signed certificate by a valid one:
   ```
   3. Update the cluster-wide proxy configuration with the newly created ConfigMap:
   ```bash
-  oc patch proxy/cluster --type=merge --patch='{"spec":{"trustedCA":{"name":"custom-ca"}}}
+  oc patch proxy/cluster --type=merge --patch='{"spec":{"trustedCA":{"name":"custom-ca"}}}'
 
 
   ```
