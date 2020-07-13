@@ -95,12 +95,7 @@ In case of using an already existing VPC you will also need to add the CIDR bloc
 ```bash
 networking:
   machineNetwork:
-  - cidr: 10.0.1.0/24	
-  - cidr: 10.0.3.0/24	
-  - cidr: 10.0.5.0/24
-  - cidr: 10.0.2.0/24	
-  - cidr: 10.0.4.0/24	
-  - cidr: 10.0.6.0/24
+  - cidr: 10.0.0.0/16
 
 
 ```
