@@ -6,3 +6,5 @@
 1. https://docs.openshift.com/container-platform/4.4/installing/install_config/installing-customizing.html#installation-special-config-kargs_installing-customizing
 1. https://docs.openshift.com/container-platform/4.4/installing/install_config/installing-customizing.html#installation-special-config-encrypt-disk_installing-customizing
 1. https://docs.openshift.com/container-platform/4.4/installing/install_config/installing-customizing.html#installation-special-config-crony_installing-customizing
+1. https://docs.openshift.com/container-platform/4.4/authentication/using-rbac.html
+1. https://docs.openshift.com/container-platform/4.4/authentication/remove-kubeadmin.html
