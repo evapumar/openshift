@@ -70,7 +70,7 @@ chmod +x fix-config.sh && ./fix-config.sh
 ```
 If you wish your cluster to be private and not accessible from the external network:
 ```bash
-sed --in-place s/External/Internal/ install-config.yaml
+sed --in-place s/External/Internal/ $dir/install-config.yaml
 
 
 ```
