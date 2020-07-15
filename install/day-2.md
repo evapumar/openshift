@@ -3,8 +3,8 @@
 1. https://docs.openshift.com/container-platform/4.4/authentication/identity_providers/configuring-htpasswd-identity-provider.html
 1. https://docs.openshift.com/container-platform/4.4/authentication/using-rbac.html
 1. https://docs.openshift.com/container-platform/4.4/authentication/remove-kubeadmin.html
-1. https://docs.openshift.com/container-platform/4.4/updating/updating-cluster.html
 1. https://docs.openshift.com/container-platform/4.4/security/encrypting-etcd.html
+1. https://docs.openshift.com/container-platform/4.4/updating/updating-cluster.html
 1. https://docs.openshift.com/container-platform/4.4/logging/config/cluster-logging-configuring-about.html
 1. https://docs.openshift.com/container-platform/4.4/logging/cluster-logging-deploying.html
 1. https://docs.openshift.com/container-platform/4.4/logging/cluster-logging-eventrouter.html
