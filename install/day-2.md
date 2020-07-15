@@ -12,6 +12,7 @@
 1. https://docs.openshift.com/container-platform/4.4/logging/cluster-logging-eventrouter.html
 1. https://docs.openshift.com/container-platform/4.4/logging/cluster-logging-viewing.html
 1. https://docs.openshift.com/container-platform/4.4/logging/cluster-logging-kibana-interface.html
+1. https://docs.openshift.com/container-platform/4.4/logging/config/cluster-logging-systemd.html
 1. https://docs.openshift.com/container-platform/4.4/logging/cluster-logging-uninstall.html
 1. https://docs.openshift.com/container-platform/4.4/service_mesh/service_mesh_install/preparing-ossm-installation.html
 1. https://docs.openshift.com/container-platform/4.4/service_mesh/service_mesh_install/installing-ossm.html
