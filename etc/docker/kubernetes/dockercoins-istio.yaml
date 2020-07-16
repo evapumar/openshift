@@ -114,6 +114,39 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
+  name: hasher
+  namespace: dockercoins-x
+spec:
+  host: hasher
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: redis
+  namespace: dockercoins-x
+spec:
+  host: redis
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: rng
+  namespace: dockercoins-x
+spec:
+  host: rng
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
   name: webui
   namespace: dockercoins-x
 spec:
@@ -121,97 +154,6 @@ spec:
   trafficPolicy:
     tls:
       mode: ISTIO_MUTUAL
----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: hasher
-  namespace: dockercoins-x
-spec:
-  podSelector:
-    matchLabels:
-      service: hasher
-  ingress:
-    -
-      from:
-        -
-          namespaceSelector:
-            matchLabels:
-              namespace: dockercoins-x
-        -
-          podSelector:
-            matchLabels:
-              service: worker
-      ports:
-        -
-          protocol: TCP
-          port: 8080
----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: redis
-  namespace: dockercoins-x
-spec:
-  podSelector:
-    matchLabels:
-      service: redis
-  ingress:
-    -
-      from:
-        -
-          namespaceSelector:
-            matchLabels:
-              namespace: dockercoins-x
-        -
-          podSelector:
-            matchLabels:
-              service: webui
-        -
-          podSelector:
-            matchLabels:
-              service: worker
-      ports:
-        -
-          protocol: TCP
-          port: 6379
----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: rng
-  namespace: dockercoins-x
-spec:
-  podSelector:
-    matchLabels:
-      service: rng
-  ingress:
-    -
-      from:
-        -
-          namespaceSelector:
-            matchLabels:
-              namespace: dockercoins-x
-        -
-          podSelector:
-            matchLabels:
-              service: worker
-      ports:
-        -
-          protocol: TCP
-          port: 8080
----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: worker
-  namespace: dockercoins-x
-spec:
-  podSelector:
-    matchLabels:
-      service: worker
-  policyTypes:
-  - Ingress
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
