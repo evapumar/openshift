@@ -7,7 +7,7 @@
 
 AWSTemplateFormatVersion: "2010-09-09"
 
-Description: This template creates a new VPC and deploys a production-grade HA cluster in AWS
+Description: This template creates a new VPC with HA in AWS
 
 #============================================================
 # UI Definition
@@ -46,49 +46,49 @@ Metadata:
 Parameters:
 
   SubnetCidrBlockPrivate1:
-    Default: 10.168.1.0/24
+    Default: 10.0.1.0/24
     Description: >
       CIDR block for private subnet located in Availability Zone 1. 
       All resources located on this subnet are provided an IP within this address block. 
     Type: String
     
   SubnetCidrBlockPrivate2:
-    Default: 10.168.3.0/24
+    Default: 10.0.3.0/24
     Description: >
       CIDR block for private subnet located in Availability Zone 2. 
       All resources located on this subnet are provided an IP within this address block. 
     Type: String
     
   SubnetCidrBlockPrivate3:
-    Default: 10.168.5.0/24
+    Default: 10.0.5.0/24
     Description: >
       CIDR block for private subnet located in Availability Zone 3. 
       All resources located on this subnet are provided an IP within this address block. 
     Type: String
     
   SubnetCidrBlockPublic1:
-    Default: 10.168.2.0/24
+    Default: 10.0.2.0/24
     Description: >
       CIDR block for public (DMZ) subnet located in Availability Zone 1. 
       All resources located on this subnet are provided an IP within this address block. 
     Type: String
     
   SubnetCidrBlockPublic2:
-    Default: 10.168.4.0/24
+    Default: 10.0.4.0/24
     Description: >
       CIDR block for public (DMZ) subnet located in Availability Zone 2. 
       All resources located on this subnet are provided an IP within this address block. 
     Type: String
     
   SubnetCidrBlockPublic3:
-    Default: 10.168.6.0/24
+    Default: 10.0.6.0/24
     Description: >
       CIDR block for public (DMZ) subnet located in Availability Zone 3. 
       All resources located on this subnet are provided an IP within this address block. 
     Type: String
     
   VPCCidrBlock:
-    Default: 10.168.0.0/16
+    Default: 10.0.0.0/16
     Description: >
       CIDR block for the VPC. All the subnets and resources will have an IP within this address block.
     Type: String
@@ -289,6 +289,8 @@ Resources:
 
   VPCGatewayAttachment:
     Properties:
+      EnableDnsSupport: true
+      EnableDnsHostnames: true   
       InternetGatewayId: !Ref InternetGateway
       VpcId: !Ref VPC
     Type: AWS::EC2::VPCGatewayAttachment
