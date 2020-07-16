@@ -192,6 +192,23 @@ spec:
   policyTypes:
   - Ingress
 ---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: dockercoins
+  namespace: dockercoins-x
+spec:
+  to:
+    kind: Service
+    name: webui
+    weight: 100
+  port:
+    targetPort: 8080
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -239,22 +256,4 @@ spec:
     port: 8080
   selector:
     service: webui
----
-apiVersion: route.openshift.io/v1
-kind: Route
-metadata:
-  name: dockercoins
-  namespace: dockercoins-x
-spec:
-  host: dockercoins-x.apps.openshift.sebastian-colomar.es
-  to:
-    kind: Service
-    name: webui
-    weight: 100
-  port:
-    targetPort: 8080
-  tls:
-    termination: edge
-    insecureEdgeTerminationPolicy: Redirect
-  wildcardPolicy: None
 ################################################################################
