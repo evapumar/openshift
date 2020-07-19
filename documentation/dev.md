@@ -1,8 +1,8 @@
-1. https://docs.openshift.com/container-platform/4.4/welcome/index.html
-1. https://docs.openshift.com/container-platform/4.4/welcome/oke_about.html
-1. https://docs.openshift.com/container-platform/4.4/architecture/architecture.html
-1. https://docs.openshift.com/container-platform/4.4/architecture/control-plane.html
-1. https://docs.openshift.com/container-platform/4.4/architecture/understanding-development.html
+1. https://docs.openshift.com/container-platform/4.5/welcome/index.html
+1. https://docs.openshift.com/container-platform/4.5/welcome/oke_about.html
+1. https://docs.openshift.com/container-platform/4.5/architecture/architecture.html
+1. https://docs.openshift.com/container-platform/4.5/architecture/control-plane.html
+1. https://docs.openshift.com/container-platform/4.5/architecture/understanding-development.html
    1. https://docs.docker.com/engine/reference/builder/
    1. https://hub.docker.com/
    1. https://catalog.redhat.com/software/containers/search
@@ -14,18 +14,18 @@
    1. https://kubernetes.io/docs/concepts/storage/persistent-volumes/
    1. https://kubernetes.io/docs/concepts/configuration/secret/
    1. https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
-   1. https://docs.openshift.com/container-platform/4.4/applications/deployments/what-deployments-are.html
+   1. https://docs.openshift.com/container-platform/4.5/applications/deployments/what-deployments-are.html
    1. https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
    1. https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/
    1. https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
    1. https://coreos.com/operators/
    1. https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
    1. https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/
-1. https://docs.openshift.com/container-platform/4.4/web_console/web-console.html
-1. https://docs.openshift.com/container-platform/4.4/web_console/using-dashboard-to-get-cluster-information.html
-1. https://docs.openshift.com/container-platform/4.4/web_console/odc-about-developer-perspective.html
-   1. https://docs.openshift.com/container-platform/4.4/applications/application_life_cycle_management/odc-creating-applications-using-developer-perspective.html#odc-creating-applications-using-developer-perspective
-   1. https://docs.openshift.com/container-platform/4.4/applications/application_life_cycle_management/odc-viewing-application-composition-using-topology-view.html#odc-viewing-application-composition-using-topology-view
-1. https://docs.openshift.com/container-platform/4.4/cli_reference/openshift_cli/getting-started-cli.html
+1. https://docs.openshift.com/container-platform/4.5/web_console/web-console.html
+1. https://docs.openshift.com/container-platform/4.5/web_console/using-dashboard-to-get-cluster-information.html
+1. https://docs.openshift.com/container-platform/4.5/web_console/odc-about-developer-perspective.html
+   1. https://docs.openshift.com/container-platform/4.5/applications/application_life_cycle_management/odc-creating-applications-using-developer-perspective.html#odc-creating-applications-using-developer-perspective
+   1. https://docs.openshift.com/container-platform/4.5/applications/application_life_cycle_management/odc-viewing-application-composition-using-topology-view.html#odc-viewing-application-composition-using-topology-view
+1. https://docs.openshift.com/container-platform/4.5/cli_reference/openshift_cli/getting-started-cli.html
    
    
