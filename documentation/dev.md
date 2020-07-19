@@ -1,5 +1,6 @@
 1. https://docs.openshift.com/container-platform/4.5/welcome/index.html
 1. https://docs.openshift.com/container-platform/4.5/welcome/oke_about.html
+1. https://docs.openshift.com/container-platform/4.5/release_notes/ocp-4-5-release-notes.html
 1. https://docs.openshift.com/container-platform/4.5/architecture/architecture.html
 1. https://docs.openshift.com/container-platform/4.5/architecture/control-plane.html
 1. https://docs.openshift.com/container-platform/4.5/architecture/understanding-development.html
