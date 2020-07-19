@@ -24,6 +24,7 @@
 1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-user-infra.html
 1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-restricted-networks-aws.html
 1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/uninstalling-cluster-aws.html
+1. https://docs.openshift.com/container-platform/4.5/installing/installing-troubleshooting.html
 
 ### Other
 
