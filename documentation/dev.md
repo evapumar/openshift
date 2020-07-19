@@ -2,12 +2,14 @@
 1. https://docs.openshift.com/container-platform/4.5/welcome/oke_about.html
 1. https://docs.openshift.com/container-platform/4.5/release_notes/ocp-4-5-release-notes.html
 
+
 1. https://docs.openshift.com/container-platform/4.5/architecture/architecture.html
 1. https://docs.openshift.com/container-platform/4.5/architecture/architecture-installation.html
 1. https://docs.openshift.com/container-platform/4.5/architecture/control-plane.html
 1. https://docs.openshift.com/container-platform/4.5/architecture/understanding-development.html
 1. https://docs.openshift.com/container-platform/4.5/architecture/architecture-rhcos.html
 1. https://docs.openshift.com/container-platform/4.5/architecture/cicd_gitops.html
+
 
 1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-account.html
 1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-default.html
@@ -38,6 +40,8 @@
    1. https://coreos.com/operators/
    1. https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
    1. https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/
+   
+   
 1. https://docs.openshift.com/container-platform/4.5/web_console/web-console.html
 1. https://docs.openshift.com/container-platform/4.5/web_console/using-dashboard-to-get-cluster-information.html
 1. https://docs.openshift.com/container-platform/4.5/web_console/odc-about-developer-perspective.html
