@@ -25,6 +25,12 @@
 1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-restricted-networks-aws.html
 1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/uninstalling-cluster-aws.html
 1. https://docs.openshift.com/container-platform/4.5/installing/installing-troubleshooting.html
+1. https://docs.openshift.com/container-platform/4.5/installing/install_config/installation-types.html
+1. https://docs.openshift.com/container-platform/4.5/installing/install_config/installing-customizing.html
+1. https://docs.openshift.com/container-platform/4.5/installing/install_config/installing-restricted-networks-preparations.html
+1. https://docs.openshift.com/container-platform/4.5/installing/install_config/customizations.html
+1. https://docs.openshift.com/container-platform/4.5/installing/install_config/configuring-firewall.html
+1. https://docs.openshift.com/container-platform/4.5/installing/install_config/configuring-private-cluster.html
 
 ### Other
 
