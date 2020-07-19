@@ -1,7 +1,10 @@
+### Welcome
+
 1. https://docs.openshift.com/container-platform/4.5/welcome/index.html
 1. https://docs.openshift.com/container-platform/4.5/welcome/oke_about.html
 1. https://docs.openshift.com/container-platform/4.5/release_notes/ocp-4-5-release-notes.html
 
+### Architecture
 
 1. https://docs.openshift.com/container-platform/4.5/architecture/architecture.html
 1. https://docs.openshift.com/container-platform/4.5/architecture/architecture-installation.html
@@ -10,6 +13,7 @@
 1. https://docs.openshift.com/container-platform/4.5/architecture/architecture-rhcos.html
 1. https://docs.openshift.com/container-platform/4.5/architecture/cicd_gitops.html
 
+### Installing
 
 1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-account.html
 1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-default.html
@@ -21,6 +25,7 @@
 1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-restricted-networks-aws.html
 1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/uninstalling-cluster-aws.html
 
+### Other
 
    1. https://docs.docker.com/engine/reference/builder/
    1. https://hub.docker.com/
