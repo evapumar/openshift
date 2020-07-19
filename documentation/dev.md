@@ -51,6 +51,16 @@
 ### Web Console
 
 1. https://docs.openshift.com/container-platform/4.5/web_console/web-console.html
+1. https://docs.openshift.com/container-platform/4.5/web_console/using-dashboard-to-get-cluster-information.html
+1. https://docs.openshift.com/container-platform/4.5/web_console/configuring-web-console.html
+1. https://docs.openshift.com/container-platform/4.5/web_console/customizing-the-web-console.html
+1. https://docs.openshift.com/container-platform/4.5/web_console/odc-about-developer-perspective.html
+1. https://docs.openshift.com/container-platform/4.5/web_console/disabling-web-console.html
+
+### Security
+1. https://docs.openshift.com/container-platform/4.5/security/container_security/security-understanding.html
+1. https://docs.openshift.com/container-platform/4.5/security/container_security/security-hosts-vms.html
+1.https://docs.openshift.com/container-platform/4.5/security/container_security/security-hardening.html
 
 
 ### Other
