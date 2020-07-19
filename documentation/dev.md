@@ -1,10 +1,25 @@
 1. https://docs.openshift.com/container-platform/4.5/welcome/index.html
 1. https://docs.openshift.com/container-platform/4.5/welcome/oke_about.html
 1. https://docs.openshift.com/container-platform/4.5/release_notes/ocp-4-5-release-notes.html
+
 1. https://docs.openshift.com/container-platform/4.5/architecture/architecture.html
 1. https://docs.openshift.com/container-platform/4.5/architecture/architecture-installation.html
 1. https://docs.openshift.com/container-platform/4.5/architecture/control-plane.html
 1. https://docs.openshift.com/container-platform/4.5/architecture/understanding-development.html
+1. https://docs.openshift.com/container-platform/4.5/architecture/architecture-rhcos.html
+1. https://docs.openshift.com/container-platform/4.5/architecture/cicd_gitops.html
+
+1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-account.html
+1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-default.html
+1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-customizations.html
+1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-network-customizations.html
+1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-vpc.html
+1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-private.html
+1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-user-infra.html
+1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-restricted-networks-aws.html
+1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/uninstalling-cluster-aws.html
+
+
    1. https://docs.docker.com/engine/reference/builder/
    1. https://hub.docker.com/
    1. https://catalog.redhat.com/software/containers/search
