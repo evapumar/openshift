@@ -167,35 +167,16 @@
 
 ### Builds
 1. https://docs.openshift.com/container-platform/4.5/builds/understanding-image-builds.html
+1. https://docs.openshift.com/container-platform/4.5/builds/understanding-buildconfigs.html
+1. https://docs.openshift.com/container-platform/4.5/builds/creating-build-inputs.html
+1. https://docs.openshift.com/container-platform/4.5/builds/managing-build-output.html
+1. https://docs.openshift.com/container-platform/4.5/builds/build-strategies.html
+1. https://docs.openshift.com/container-platform/4.5/builds/basic-build-operations.html
+1. https://docs.openshift.com/container-platform/4.5/builds/triggering-builds-build-hooks.html
+1. https://docs.openshift.com/container-platform/4.5/builds/advanced-build-operations.html
+1. https://docs.openshift.com/container-platform/4.5/builds/running-entitled-builds.html
+1. https://docs.openshift.com/container-platform/4.5/builds/securing-builds-by-strategy.html
+1. https://docs.openshift.com/container-platform/4.5/builds/build-configuration.html
+1. https://docs.openshift.com/container-platform/4.5/builds/troubleshooting-builds.html
+1. https://docs.openshift.com/container-platform/4.5/builds/setting-up-trusted-ca.html
 
-
-### Other
-
-   1. https://docs.docker.com/engine/reference/builder/
-   1. https://hub.docker.com/
-   1. https://catalog.redhat.com/software/containers/search
-   1. https://access.redhat.com/terms-based-registry/
-   1. https://kubernetes.io/docs/concepts/services-networking/service/
-   1. https://kubernetes.io/docs/concepts/services-networking/network-policies/
-   1. https://kubernetes.io/docs/concepts/services-networking/ingress/
-   1. https://kubernetes.io/docs/concepts/storage/volumes/
-   1. https://kubernetes.io/docs/concepts/storage/persistent-volumes/
-   1. https://kubernetes.io/docs/concepts/configuration/secret/
-   1. https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
-   1. https://docs.openshift.com/container-platform/4.5/applications/deployments/what-deployments-are.html
-   1. https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
-   1. https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/
-   1. https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
-   1. https://coreos.com/operators/
-   1. https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
-   1. https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/
-   
-   
-1. https://docs.openshift.com/container-platform/4.5/web_console/web-console.html
-1. https://docs.openshift.com/container-platform/4.5/web_console/using-dashboard-to-get-cluster-information.html
-1. https://docs.openshift.com/container-platform/4.5/web_console/odc-about-developer-perspective.html
-   1. https://docs.openshift.com/container-platform/4.5/applications/application_life_cycle_management/odc-creating-applications-using-developer-perspective.html#odc-creating-applications-using-developer-perspective
-   1. https://docs.openshift.com/container-platform/4.5/applications/application_life_cycle_management/odc-viewing-application-composition-using-topology-view.html#odc-viewing-application-composition-using-topology-view
-1. https://docs.openshift.com/container-platform/4.5/cli_reference/openshift_cli/getting-started-cli.html
-   
-   
