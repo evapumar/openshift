@@ -32,6 +32,12 @@
 1. https://docs.openshift.com/container-platform/4.5/installing/install_config/configuring-firewall.html
 1. https://docs.openshift.com/container-platform/4.5/installing/install_config/configuring-private-cluster.html
 
+### Updating
+
+1. https://docs.openshift.com/container-platform/4.5/updating/updating-cluster-between-minor.html
+1. https://docs.openshift.com/container-platform/4.5/updating/updating-cluster.html
+
+
 ### Other
 
    1. https://docs.docker.com/engine/reference/builder/
