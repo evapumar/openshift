@@ -48,6 +48,10 @@
 1. https://docs.openshift.com/container-platform/4.5/support/remote_health_monitoring/opting-out-of-remote-health-reporting.html
 1. https://docs.openshift.com/container-platform/4.5/support/remote_health_monitoring/using-insights-to-identify-issues-with-your-cluster.html
 
+### Web Console
+
+1. https://docs.openshift.com/container-platform/4.5/web_console/web-console.html
+
 
 ### Other
 
