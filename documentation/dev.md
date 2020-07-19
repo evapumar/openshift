@@ -42,6 +42,11 @@
 ### Support
 
 1. https://docs.openshift.com/container-platform/4.5/support/getting-support.html
+1. https://docs.openshift.com/container-platform/4.5/support/gathering-cluster-data.html
+1. https://docs.openshift.com/container-platform/4.5/support/remote_health_monitoring/about-remote-health-monitoring.html
+1. https://docs.openshift.com/container-platform/4.5/support/remote_health_monitoring/showing-data-collected-by-remote-health-monitoring.html
+1. https://docs.openshift.com/container-platform/4.5/support/remote_health_monitoring/opting-out-of-remote-health-reporting.html
+1. https://docs.openshift.com/container-platform/4.5/support/remote_health_monitoring/using-insights-to-identify-issues-with-your-cluster.html
 
 
 ### Other
