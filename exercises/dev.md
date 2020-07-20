@@ -48,10 +48,13 @@
    ``` 
 1. https://console-openshift-console.apps.openshift.sebastian-colomar.es
 1. https://oauth-openshift.apps.openshift.sebastian-colomar.es/oauth/token/request
-    
-   In order to deploy petclinic and dockercoins in Red Hat Openshift:
+
+   In order to access the Openshift cluster from AWS Cloud9 terminal:
    ```bash
    oc login --token=xxx-yyy --server=https://api.openshift.sebastian-colomar.es:6443
+   ```   
+   In order to deploy petclinic and dockercoins in Red Hat Openshift:
+   ```bash
    wget https://raw.githubusercontent.com/secobau/spring-petclinic/openshift/etc/docker/kubernetes/petclinic.yaml
    oc new-project petclinic-x
    oc apply -f petclinic.yaml -n petclinic-x   
