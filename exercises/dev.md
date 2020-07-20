@@ -1,5 +1,6 @@
 1. https://github.com/secobau/openshift/blob/master/install/IPI-External.md
 1. https://labs.play-with-docker.com
+
    START
    In node 1:
    ```bash
