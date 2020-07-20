@@ -20,6 +20,12 @@
    docker stack deploy -c docker-compose.yaml petclinic
    docker service ls
    docker stack rm petclinic
+   wget https://raw.githubusercontent.com/secobau/dockercoins/openshift/etc/docker/swarm/dockercoins.yaml
+   docker stack deploy -c dockercoins.yaml dockercoins
+   docker service ls
+   sed --in-place /node/s/worker/manager/ dockercoins.yaml
+   docker stack deploy -c dockercoins.yaml dockercoins
+   docker service ls
    ```
 1. https://labs.play-with-k8s.com
 1. https://github.com/spring-projects/spring-petclinic
