@@ -18,6 +18,7 @@
    docker node ls
    wget https://raw.githubusercontent.com/secobau/spring-petclinic/openshift/etc/docker/swarm/docker-compose.yaml
    docker stack deploy -c docker-compose.yaml petclinic
+   docker service ls
    ```
 1. https://labs.play-with-k8s.com
 1. https://github.com/spring-projects/spring-petclinic
