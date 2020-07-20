@@ -5,6 +5,9 @@ You will need the Pull Secret generated in this page:
 
 All the steps will be performed from an AWS Cloud9 terminal with enough privileges (AdministratorAccess will work).
 
+You will need to obtain a valid public domain name before installing the cluster:
+* https://console.aws.amazon.com/route53/home
+
 Disable AWS managed temporary credentials in AWS Cloud9 settings. Now you need to create a new Access Key in your AWS IAM Security Credentials and then configure your AWS Cloud9 terminal:
 ```bash
 aws configure
