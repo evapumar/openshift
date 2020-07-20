@@ -73,4 +73,4 @@
    oc delete -f $project.yaml -n $project-x
    oc delete project $project-x
    ```
-   
+1. Troubleshooting Dockercoins   
