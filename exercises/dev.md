@@ -55,17 +55,22 @@
    ```   
    In order to deploy petclinic and dockercoins in Red Hat Openshift:
    ```bash
+   project=petclinic
+   mkdir --parents $project && cd $project
    wget https://raw.githubusercontent.com/secobau/spring-petclinic/openshift/etc/docker/kubernetes/petclinic.yaml
-   oc new-project petclinic-x
-   oc apply -f petclinic.yaml -n petclinic-x   
-   oc get deployment -n petclinic-x
-   oc delete -f petclinic.yaml -n petclinic-x
-   oc delete project petclinic-x
+   oc new-project $project-x
+   oc apply -f $project.yaml -n $project-x   
+   oc get deployment -n $project-x
+   oc delete -f $project.yaml -n $project-x
+   oc delete project $project-x
+   
+   project=dockercoins
+   mkdir --parents $project && cd $project
    wget https://raw.githubusercontent.com/secobau/dockercoins/openshift/etc/docker/kubernetes/dockercoins.yaml
-   oc new-project dockercoins-x
-   oc apply -f dockercoins.yaml -n dockercoins-x
-   oc get deployment -n dockercoins-x
-   oc delete -f dockercoins.yaml -n dockercoins-x
-   oc delete project dockercoins-x
+   oc new-project $project-x
+   oc apply -f $project.yaml -n $project-x   
+   oc get deployment -n $project-x
+   oc delete -f $project.yaml -n $project-x
+   oc delete project $project-x
    ```
    
