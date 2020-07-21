@@ -1,11 +1,9 @@
 ### Welcome
-
 1. https://docs.openshift.com/container-platform/4.5/welcome/index.html
 1. https://docs.openshift.com/container-platform/4.5/welcome/oke_about.html
 1. https://docs.openshift.com/container-platform/4.5/release_notes/ocp-4-5-release-notes.html
 
 ### Architecture
-
 1. https://docs.openshift.com/container-platform/4.5/architecture/architecture.html
 1. https://docs.openshift.com/container-platform/4.5/architecture/architecture-installation.html
 1. https://docs.openshift.com/container-platform/4.5/architecture/control-plane.html
@@ -14,26 +12,11 @@
 1. https://docs.openshift.com/container-platform/4.5/architecture/cicd_gitops.html
 
 ### Installing
-
 1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-account.html
 1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-default.html
 1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-customizations.html
-1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-network-customizations.html
-1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-vpc.html
-1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-private.html
-1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-user-infra.html
-1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-restricted-networks-aws.html
-1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/uninstalling-cluster-aws.html
-1. https://docs.openshift.com/container-platform/4.5/installing/installing-troubleshooting.html
-1. https://docs.openshift.com/container-platform/4.5/installing/install_config/installation-types.html
-1. https://docs.openshift.com/container-platform/4.5/installing/install_config/installing-customizing.html
-1. https://docs.openshift.com/container-platform/4.5/installing/install_config/installing-restricted-networks-preparations.html
-1. https://docs.openshift.com/container-platform/4.5/installing/install_config/customizations.html
-1. https://docs.openshift.com/container-platform/4.5/installing/install_config/configuring-firewall.html
-1. https://docs.openshift.com/container-platform/4.5/installing/install_config/configuring-private-cluster.html
 
 ### Support
-
 1. https://docs.openshift.com/container-platform/4.5/support/getting-support.html
 1. https://docs.openshift.com/container-platform/4.5/support/gathering-cluster-data.html
 1. https://docs.openshift.com/container-platform/4.5/support/remote_health_monitoring/about-remote-health-monitoring.html
@@ -42,7 +25,6 @@
 1. https://docs.openshift.com/container-platform/4.5/support/remote_health_monitoring/using-insights-to-identify-issues-with-your-cluster.html
 
 ### Web Console
-
 1. https://docs.openshift.com/container-platform/4.5/web_console/web-console.html
 1. https://docs.openshift.com/container-platform/4.5/web_console/using-dashboard-to-get-cluster-information.html
 1. https://docs.openshift.com/container-platform/4.5/web_console/configuring-web-console.html
@@ -67,7 +49,6 @@
 1. https://docs.openshift.com/container-platform/4.5/security/certificates/service-serving-certificate.html
 
 ### Authentication
-
 1. https://docs.openshift.com/container-platform/4.5/authentication/understanding-authentication.html
 1. https://docs.openshift.com/container-platform/4.5/authentication/configuring-internal-oauth.html
 1. https://docs.openshift.com/container-platform/4.5/authentication/understanding-identity-provider.html
@@ -83,7 +64,6 @@
 1. https://docs.openshift.com/container-platform/4.5/authentication/impersonating-system-admin.html
 
 ### Networking
-
 1. https://docs.openshift.com/container-platform/4.5/networking/understanding-networking.html
 1. https://docs.openshift.com/container-platform/4.5/networking/accessing-hosts.html
 1. https://docs.openshift.com/container-platform/4.5/networking/cluster-network-operator.html
