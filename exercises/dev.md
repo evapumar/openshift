@@ -9,42 +9,52 @@
    In node 1:
    ```bash
    docker swarm init --advertise-addr 192.168.0.18
+   
+   
    ```
    ADD NEW INSTANCE
    
    In node 2:
    ```bash
    docker swarm join --token SWMTKN-1-6893uuclrr67k8pi9igfhm91onez9orkco7rlin260192ojkl1-bj2bj4bxjfbzn32d39ajjnwuf 192.168.0.18:2377
+   
+   
    ```
    In node 1 again:
    ```bash
    docker node ls
+   
+   
    ```
    In order to deploy petclinic and dockercoins in Docker Playground:
    ```bash
-   wget https://raw.githubusercontent.com/secobau/spring-petclinic/openshift/etc/docker/swarm/petclinic.yaml
-   docker stack deploy -c petclinic.yaml petclinic
+   wget https://raw.githubusercontent.com/secobau/spring-petclinic/openshift/etc/docker/swarm/spring-petclinic.yaml
+   docker stack deploy -c spring-petclinic.yaml spring-petclinic
    docker service ls
-   docker stack rm petclinic
+   docker stack rm spring-petclinic
    wget https://raw.githubusercontent.com/secobau/dockercoins/openshift/etc/docker/swarm/dockercoins.yaml
    docker stack deploy -c dockercoins.yaml dockercoins
    docker service ls
    docker stack rm dockercoins
+   
+   
    ```
 1. https://ap-south-1.console.aws.amazon.com/cloud9
    
    In order to deploy petclinic and dockercoins in AWS Cloud9:
    ```bash
    docker swarm init
-   wget https://raw.githubusercontent.com/secobau/spring-petclinic/openshift/etc/docker/swarm/petclinic.yaml
-   sed --in-place /node/s/worker/manager/ petclinic.yaml
-   docker stack deploy -c petclinic.yaml petclinic
+   wget https://raw.githubusercontent.com/secobau/spring-petclinic/openshift/etc/docker/swarm/spring-petclinic.yaml
+   sed --in-place /node/s/worker/manager/ spring-petclinic.yaml
+   docker stack deploy -c spring-petclinic.yaml spring-petclinic
    docker service ls
-   docker stack rm petclinic
+   docker stack rm spring-petclinic
    wget https://raw.githubusercontent.com/secobau/dockercoins/openshift/etc/docker/swarm/dockercoins.yaml
    docker stack deploy -c dockercoins.yaml dockercoins
    docker service ls
    docker stack rm dockercoins
+   
+   
    ``` 
 1. https://console-openshift-console.apps.openshift.sebastian-colomar.es
 1. https://oauth-openshift.apps.openshift.sebastian-colomar.es/oauth/token/request
@@ -52,25 +62,35 @@
    In order to access the Openshift cluster from AWS Cloud9 terminal:
    ```bash
    oc login --token=xxx-yyy --server=https://api.openshift.sebastian-colomar.es:6443
+   
+   
    ```   
    In order to deploy petclinic and dockercoins in Red Hat Openshift:
    ```bash
-   project=petclinic
+   project=spring-petclinic
+   
    mkdir --parents $project && cd $project
-   wget https://raw.githubusercontent.com/secobau/spring-petclinic/openshift/etc/docker/kubernetes/petclinic.yaml
+   wget https://raw.githubusercontent.com/secobau/$project/openshift/etc/docker/kubernetes/$project.yaml
    oc new-project $project-x
    oc apply -f $project.yaml -n $project-x   
    oc get deployment -n $project-x
+   
    oc delete -f $project.yaml -n $project-x
    oc delete project $project-x
+   cd .. && rm --recursive --force $project
    
    project=dockercoins
+   
    mkdir --parents $project && cd $project
-   wget https://raw.githubusercontent.com/secobau/dockercoins/openshift/etc/docker/kubernetes/dockercoins.yaml
+   wget https://raw.githubusercontent.com/secobau/$project/openshift/etc/docker/kubernetes/$project.yaml
    oc new-project $project-x
    oc apply -f $project.yaml -n $project-x   
    oc get deployment -n $project-x
+   
    oc delete -f $project.yaml -n $project-x
    oc delete project $project-x
+   cd .. && rm --recursive --force $project
+
+
    ```
 1. Troubleshooting Dockercoins   
