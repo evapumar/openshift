@@ -16,13 +16,6 @@
 1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-default.html
 1. https://docs.openshift.com/container-platform/4.5/installing/installing_aws/installing-aws-customizations.html
 
-### Support
-1. https://docs.openshift.com/container-platform/4.5/support/getting-support.html
-1. https://docs.openshift.com/container-platform/4.5/support/gathering-cluster-data.html
-1. https://docs.openshift.com/container-platform/4.5/support/remote_health_monitoring/about-remote-health-monitoring.html
-1. https://docs.openshift.com/container-platform/4.5/support/remote_health_monitoring/showing-data-collected-by-remote-health-monitoring.html
-1. https://docs.openshift.com/container-platform/4.5/support/remote_health_monitoring/opting-out-of-remote-health-reporting.html
-1. https://docs.openshift.com/container-platform/4.5/support/remote_health_monitoring/using-insights-to-identify-issues-with-your-cluster.html
 
 ### Web Console
 1. https://docs.openshift.com/container-platform/4.5/web_console/web-console.html
@@ -47,21 +40,6 @@
 1. https://docs.openshift.com/container-platform/4.5/security/certificates/replacing-default-ingress-certificate.html
 1. https://docs.openshift.com/container-platform/4.5/security/certificates/api-server.html
 1. https://docs.openshift.com/container-platform/4.5/security/certificates/service-serving-certificate.html
-
-### Authentication
-1. https://docs.openshift.com/container-platform/4.5/authentication/understanding-authentication.html
-1. https://docs.openshift.com/container-platform/4.5/authentication/configuring-internal-oauth.html
-1. https://docs.openshift.com/container-platform/4.5/authentication/understanding-identity-provider.html
-1. https://docs.openshift.com/container-platform/4.5/authentication/identity_providers/configuring-htpasswd-identity-provider.html
-1. https://docs.openshift.com/container-platform/4.5/authentication/identity_providers/configuring-github-identity-provider.html
-1. https://docs.openshift.com/container-platform/4.5/authentication/using-rbac.html
-1. https://docs.openshift.com/container-platform/4.5/authentication/remove-kubeadmin.html
-1. https://docs.openshift.com/container-platform/4.5/authentication/understanding-and-creating-service-accounts.html
-1. https://docs.openshift.com/container-platform/4.5/authentication/using-service-accounts-in-applications.html
-1. https://docs.openshift.com/container-platform/4.5/authentication/tokens-scoping.html
-1. https://docs.openshift.com/container-platform/4.5/authentication/bound-service-account-tokens.html
-1. https://docs.openshift.com/container-platform/4.5/authentication/managing-security-context-constraints.html
-1. https://docs.openshift.com/container-platform/4.5/authentication/impersonating-system-admin.html
 
 ### Networking
 1. https://docs.openshift.com/container-platform/4.5/networking/understanding-networking.html
