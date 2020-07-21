@@ -153,3 +153,30 @@
 1. https://docs.openshift.com/container-platform/4.5/builds/troubleshooting-builds.html
 1. https://docs.openshift.com/container-platform/4.5/builds/setting-up-trusted-ca.html
 
+### Applications
+1. https://docs.openshift.com/container-platform/4.5/applications/projects/working-with-projects.html
+1. https://docs.openshift.com/container-platform/4.5/applications/application_life_cycle_management/odc-creating-applications-using-developer-perspective.html
+1. https://docs.openshift.com/container-platform/4.5/applications/application_life_cycle_management/creating-applications-using-cli.html
+1. https://docs.openshift.com/container-platform/4.5/applications/application_life_cycle_management/odc-viewing-application-composition-using-topology-view.html
+1. https://docs.openshift.com/container-platform/4.5/applications/application_life_cycle_management/odc-working-with-helm-charts-using-developer-perspective.html
+1. https://docs.openshift.com/container-platform/4.5/applications/deployments/what-deployments-are.html
+1. https://docs.openshift.com/container-platform/4.5/applications/deployments/managing-deployment-processes.html
+1. https://docs.openshift.com/container-platform/4.5/applications/odc-monitoring-project-and-application-metrics-using-developer-perspective.html
+1. https://docs.openshift.com/container-platform/4.5/applications/application-health.html
+
+### CLI Reference
+1. https://docs.openshift.com/container-platform/4.5/cli_reference/openshift_cli/getting-started-cli.html
+1. https://docs.openshift.com/container-platform/4.5/cli_reference/openshift_cli/configuring-cli.html
+1. https://docs.openshift.com/container-platform/4.5/cli_reference/openshift_cli/extending-cli-plugins.html
+1. https://docs.openshift.com/container-platform/4.5/cli_reference/openshift_cli/developer-cli-commands.html
+1. https://docs.openshift.com/container-platform/4.5/cli_reference/openshift_cli/usage-oc-kubectl.html
+
+### API Reference
+1. https://docs.openshift.com/container-platform/4.5/rest_api/objects/index.html
+
+### Service Mesh
+1. https://docs.openshift.com/container-platform/4.5/service_mesh/service_mesh_arch/understanding-ossm.html
+1. https://docs.openshift.com/container-platform/4.5/service_mesh/service_mesh_arch/ossm-kiali.html
+1. https://docs.openshift.com/container-platform/4.5/service_mesh/service_mesh_arch/ossm-jaeger.html
+1. https://docs.openshift.com/container-platform/4.5/service_mesh/service_mesh_arch/ossm-vs-community.html
+1. https://docs.openshift.com/container-platform/4.5/service_mesh/service_mesh_day_two/ossm-example-bookinfo.html
