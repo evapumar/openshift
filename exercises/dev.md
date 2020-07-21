@@ -67,7 +67,7 @@
    ```   
    In order to deploy petclinic and dockercoins in Red Hat Openshift:
    ```bash
-   user=dev-0
+   user=dev-x
    
    project=spring-petclinic
    
