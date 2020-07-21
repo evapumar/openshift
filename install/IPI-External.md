@@ -15,9 +15,12 @@ aws configure
 
 ```
 
-Now generate an SSH key pair.
+Now generate an SSH key pair and add it to the SSH agent. This will allow you to access the cluster nodes through SSH.
 ```bash
 ssh-keygen
+
+eval "$(ssh-agent -s)"
+ssh-add $HOME/.ssh/id_rsa
 
 
 ```
@@ -29,9 +32,6 @@ version=4.5.2
 ```
 Afterwards you can proceed to install the client and the installer binaries:
 ```bash
-eval "$(ssh-agent -s)"
-ssh-add $HOME/.ssh/id_rsa
-
 for mode in client install
 do
   wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/$version/openshift-$mode-linux-$version.tar.gz
