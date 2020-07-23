@@ -93,6 +93,18 @@
    oc delete project $project-$user
    cd .. && rm --recursive --force $project
 
+   project=docker-xwiki
+   
+   mkdir --parents $project && cd $project
+   wget https://raw.githubusercontent.com/secobau/$project/openshift/etc/docker/kubernetes/$project.yaml
+   oc new-project $project-$user
+   oc apply -f $project.yaml -n $project-$user   
+   oc get deployment -n $project-$user
+   
+   oc delete -f $project.yaml -n $project-$user
+   oc delete project $project-$user
+   cd .. && rm --recursive --force $project
+
 
    ```
 1. Troubleshooting Dockercoins   
