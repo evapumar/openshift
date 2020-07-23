@@ -8,6 +8,7 @@
 1. https://docs.openshift.com/container-platform/4.5/architecture/architecture-installation.html
 1. https://docs.openshift.com/container-platform/4.5/architecture/control-plane.html
 1. https://docs.openshift.com/container-platform/4.5/architecture/understanding-development.html
+   * https://catalog.redhat.com/software/containers/search
 1. https://docs.openshift.com/container-platform/4.5/architecture/architecture-rhcos.html
 1. https://docs.openshift.com/container-platform/4.5/architecture/cicd_gitops.html
 
