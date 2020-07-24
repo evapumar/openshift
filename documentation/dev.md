@@ -78,6 +78,7 @@
 
 ### Storage
 1. https://docs.openshift.com/container-platform/4.5/storage/understanding-persistent-storage.html
+   * https://access.redhat.com/solutions/4651451
 1. https://docs.openshift.com/container-platform/4.5/storage/persistent_storage/persistent-storage-hostpath.html
 1. https://docs.openshift.com/container-platform/4.5/storage/persistent_storage/persistent-storage-local.html
 1. https://docs.openshift.com/container-platform/4.5/storage/persistent_storage/persistent-storage-nfs.html
