@@ -128,34 +128,35 @@
 1. https://github.com/secobau/phpinfo
 
    1. In order to deploy phpinfo in Red Hat Openshift:
-   ```bash
-   user=dev-x
-   
-   project=phpinfo
-   
-   oc new-project $project-$user
-   oc apply -n $project-$user -f https://raw.githubusercontent.com/secobau/$project/master/etc/docker/kubernetes/openshift/$project.yaml
-   oc get deployment -n $project-$user
-   
-   oc delete -n $project-$user -f https://raw.githubusercontent.com/secobau/$project/master/etc/docker/kubernetes/openshift/$project.yaml
-   oc delete project $project-$user
+      ```bash
+      user=dev-x
+
+      project=phpinfo
+
+      oc new-project $project-$user
+      oc apply -n $project-$user -f https://raw.githubusercontent.com/secobau/$project/master/etc/docker/kubernetes/openshift/$project.yaml
+      oc get deployment -n $project-$user
+
+      oc delete -n $project-$user -f https://raw.githubusercontent.com/secobau/$project/master/etc/docker/kubernetes/openshift/$project.yaml
+      oc delete project $project-$user
 
 
-   ```
+      ```
    1. In order to deploy phpinfo in Red Hat Openshift through templates:
-   ```bash
-   user=dev-x
-   
-   project=phpinfo
-   
-   oc new-project $project-$user
-   oc process -f https://raw.githubusercontent.com/secobau/$project/master/etc/docker/kubernetes/openshift/templates/$project.yaml | oc apply -n $project-$user -f -
-   oc get deployment -n $project-$user
-   
-   oc process -f https://raw.githubusercontent.com/secobau/$project/master/etc/docker/kubernetes/openshift/templates/$project.yaml | oc delete -n $project-$user -f -
-   oc delete project $project-$user
+      ```bash
+      user=dev-x
+
+      project=phpinfo
+
+      oc new-project $project-$user
+      oc process -f https://raw.githubusercontent.com/secobau/$project/master/etc/docker/kubernetes/openshift/templates/$project.yaml | oc apply -n $project-$user -f -
+      oc get deployment -n $project-$user
+
+      oc process -f https://raw.githubusercontent.com/secobau/$project/master/etc/docker/kubernetes/openshift/templates/$project.yaml | oc delete -n $project-$user -f -
+      oc delete project $project-$user
 
 
-   ```
+      ```
 1. Service Mesh:
    1. https://docs.openshift.com/container-platform/4.5/service_mesh/service_mesh_install/installing-ossm.html
+   
