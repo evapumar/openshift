@@ -71,27 +71,21 @@
    
    project=spring-petclinic
    
-   mkdir --parents $project && cd $project
-   wget https://raw.githubusercontent.com/secobau/$project/openshift/etc/docker/kubernetes/$project.yaml
    oc new-project $project-$user
-   oc apply -f $project.yaml -n $project-$user   
+   oc apply -n $project-$user -f https://raw.githubusercontent.com/secobau/$project/openshift/etc/docker/kubernetes/$project.yaml
    oc get deployment -n $project-$user
    
-   oc delete -f $project.yaml -n $project-$user
+   oc delete -n $project-$user -f https://raw.githubusercontent.com/secobau/$project/openshift/etc/docker/kubernetes/$project.yaml
    oc delete project $project-$user
-   cd .. && rm --recursive --force $project
    
    project=dockercoins
    
-   mkdir --parents $project && cd $project
-   wget https://raw.githubusercontent.com/secobau/$project/openshift/etc/docker/kubernetes/$project.yaml
    oc new-project $project-$user
-   oc apply -f $project.yaml -n $project-$user   
+   oc apply -n $project-$user -f https://raw.githubusercontent.com/secobau/$project/openshift/etc/docker/kubernetes/$project.yaml
    oc get deployment -n $project-$user
    
-   oc delete -f $project.yaml -n $project-$user
+   oc delete -n $project-$user -f https://raw.githubusercontent.com/secobau/$project/openshift/etc/docker/kubernetes/$project.yaml
    oc delete project $project-$user
-   cd .. && rm --recursive --force $project
 
 
    ```
@@ -105,15 +99,12 @@
    
    project=docker-xwiki
    
-   mkdir --parents $project && cd $project
-   wget https://raw.githubusercontent.com/secobau/$project/openshift/etc/docker/kubernetes/$project.yaml
    oc new-project $project-$user
-   oc apply -f $project.yaml -n $project-$user   
+   oc apply -n $project-$user -f https://raw.githubusercontent.com/secobau/$project/openshift/etc/docker/kubernetes/$project.yaml
    oc get deployment -n $project-$user
    
-   oc delete -f $project.yaml -n $project-$user
+   oc delete -n $project-$user -f https://raw.githubusercontent.com/secobau/$project/openshift/etc/docker/kubernetes/$project.yaml
    oc delete project $project-$user
-   cd .. && rm --recursive --force $project
 
 
    ```
@@ -125,15 +116,44 @@
    
    project=proxy2aws
    
-   mkdir --parents $project && cd $project
-   wget https://raw.githubusercontent.com/secobau/$project/openshift/etc/docker/kubernetes/$project.yaml
    oc new-project $project-$user
-   oc apply -f $project.yaml -n $project-$user   
+   oc apply -n $project-$user -f https://raw.githubusercontent.com/secobau/$project/openshift/etc/docker/kubernetes/$project.yaml
    oc get deployment -n $project-$user
    
-   oc delete -f $project.yaml -n $project-$user
+   oc delete -n $project-$user -f https://raw.githubusercontent.com/secobau/$project/openshift/etc/docker/kubernetes/$project.yaml
    oc delete project $project-$user
-   cd .. && rm --recursive --force $project
+
+
+   ```
+1. https://github.com/secobau/phpinfo
+
+   In order to deploy phpinfo in Red Hat Openshift:
+   ```bash
+   user=dev-x
+   
+   project=phpinfo
+   
+   oc new-project $project-$user
+   oc apply -n $project-$user -f https://raw.githubusercontent.com/secobau/$project/master/etc/docker/kubernetes/openshift/$project.yaml
+   oc get deployment -n $project-$user
+   
+   oc delete -n $project-$user -f https://raw.githubusercontent.com/secobau/$project/master/etc/docker/kubernetes/openshift/$project.yaml
+   oc delete project $project-$user
+
+
+   ```
+   In order to deploy phpinfo in Red Hat Openshift through templates:
+   ```bash
+   user=dev-x
+   
+   project=phpinfo
+   
+   oc new-project $project-$user
+   oc process -f https://raw.githubusercontent.com/secobau/$project/master/etc/docker/kubernetes/openshift/templates/$project.yaml | oc apply -n $project-$user -f -
+   oc get deployment -n $project-$user
+   
+   oc process -f https://raw.githubusercontent.com/secobau/$project/master/etc/docker/kubernetes/openshift/templates/$project.yaml | oc delete -n $project-$user -f -
+   oc delete project $project-$user
 
 
    ```
