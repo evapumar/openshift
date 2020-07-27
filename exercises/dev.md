@@ -127,7 +127,7 @@
    ```
 1. https://github.com/secobau/phpinfo
 
-   In order to deploy phpinfo in Red Hat Openshift:
+   1. In order to deploy phpinfo in Red Hat Openshift:
    ```bash
    user=dev-x
    
@@ -142,7 +142,7 @@
 
 
    ```
-   In order to deploy phpinfo in Red Hat Openshift through templates:
+   1. In order to deploy phpinfo in Red Hat Openshift through templates:
    ```bash
    user=dev-x
    
@@ -157,3 +157,5 @@
 
 
    ```
+1. Service Mesh:
+   1. https://docs.openshift.com/container-platform/4.5/service_mesh/service_mesh_install/installing-ossm.html
