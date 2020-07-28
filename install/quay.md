@@ -7,13 +7,16 @@
    `oc apply -f https://raw.githubusercontent.com/secobau/openshift/master/install/redhat-quay-pull-secret.yaml`
 1. Please customize the following configuration before applying it:
 
-   `oc apply -f https://raw.githubusercontent.com/redhat-cop/quay-operator/master/deploy/examples/005_advanced_config_example_cr.yaml`
+   `oc apply -f https://raw.githubusercontent.com/secobau/openshift/master/install/quayEcosystem.yaml`
 1. Create the necessary secrets:
 
    ```
-   oc create secret tls zzz --key=privkey.pem --cert=cert.pem
-   oc create secret generic zzz --from-literal=superuser-username=xxx --from-literal=superuser-password=yyy
+   oc create secret tls custom-quay-ssl --key=privkey.pem --cert=cert.pem
+   oc create secret generic quay-admin --from-literal=superuser-username=xxx --from-literal=superuser-password=yyy --from-literal=superuser-email=aaa@bbb.com
    oc create secret generic quay-config-app --from-literal=config-app-password=xxx
+   oc create secret generic quay-database-credential --from-literal=database-username=xxx --from-literal=database-password=yyy --from-literal=database-root-password=uuu --from-literal=database-name=vvv
+   oc create secret generic redis-password --from-literal=password=xxx
+   oc create secret generic s3-credentials --from-literal=accessKey=xxx --from-literal=secretKey=yyy
    
    
    ```
