@@ -110,6 +110,7 @@
    ```
 1. https://github.com/secobau/proxy2aws/tree/openshift
    * https://github.com/secobau/nginx
+   * https://hub.docker.com/r/secobau/nginx
 
    In order to deploy proxy2aws in Red Hat Openshift:
    ```bash
