@@ -178,5 +178,14 @@
    1. https://docs.openshift.com/container-platform/4.5/service_mesh/service_mesh_install/installing-ossm.html
    1. https://docs.openshift.com/container-platform/4.5/service_mesh/service_mesh_day_two/ossm-example-bookinfo.html
 1. https://github.com/kubernetes/kubernetes/issues/77086
+   
+   ```
+   ```
+
+   ```
+   oc get ns delete-dev-0 --output json | sed '/ "foregroundDeletion"/d' | curl -k  -H "Authorization: Bearer xxx" -H "Content-Type: application/json" -X PUT --data-binary @- https://api.openshift.sebastian-colomar.es:6443/api/v1/namespaces/delete-dev-0/finalize
+   
+   
+   ```
 1. https://github.com/secobau/openshift/blob/master/install/quay.md
    
