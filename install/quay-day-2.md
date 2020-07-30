@@ -12,3 +12,4 @@
 1. https://access.redhat.com/documentation/en-us/red_hat_quay/3.3/html/manage_red_hat_quay/repo-mirroring-in-red-hat-quay
 1. https://access.redhat.com/documentation/en-us/red_hat_quay/3.3/html/manage_red_hat_quay/ldap-authentication-setup-for-quay-enterprise
 1. https://access.redhat.com/documentation/en-us/red_hat_quay/3.3/html-single/red_hat_quay_api_guide/index
+1. https://access.redhat.com/solutions/3498981
