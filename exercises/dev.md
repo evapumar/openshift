@@ -191,6 +191,11 @@
 
    ```
    ```
+   oc delete project delete-dev-0
+   
+   
+   ```
+   ```
    oc get ns delete-dev-0 --output json | sed '/ "foregroundDeletion"/d' | curl -k  -H "Authorization: Bearer xxx" -H "Content-Type: application/json" -X PUT --data-binary @- https://api.openshift.sebastian-colomar.es:6443/api/v1/namespaces/delete-dev-0/finalize
    
    
