@@ -1,4 +1,5 @@
 1. https://access.redhat.com/documentation/en-us/red_hat_quay/3.3/
+1. https://access.redhat.com/documentation/en-us/red_hat_quay/3.3/html-single/deploy_red_hat_quay_on_openshift_with_quay_operator/index
 1. https://access.redhat.com/documentation/en-us/red_hat_quay/3.3/html-single/deploy_red_hat_quay_on_openshift/index
 1. https://access.redhat.com/documentation/en-us/red_hat_quay/3.3/html/deploy_red_hat_quay_on_openshift_with_quay_operator/customizing_your_red_hat_quay_cluster
 1. https://access.redhat.com/documentation/en-us/red_hat_quay/3.3/html/deploy_red_hat_quay_on_openshift_with_quay_operator/configuration_deployment_after_initial_setup
