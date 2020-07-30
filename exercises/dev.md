@@ -180,8 +180,16 @@
 1. https://github.com/kubernetes/kubernetes/issues/77086
    
    ```
-   ```
+   apiVersion: project.openshift.io/v1
+   kind: Project
+   metadata:
+     name: delete-dev-0
+   spec:
+     finalizers:
+     - foregroundDeletion
 
+
+   ```
    ```
    oc get ns delete-dev-0 --output json | sed '/ "foregroundDeletion"/d' | curl -k  -H "Authorization: Bearer xxx" -H "Content-Type: application/json" -X PUT --data-binary @- https://api.openshift.sebastian-colomar.es:6443/api/v1/namespaces/delete-dev-0/finalize
    
