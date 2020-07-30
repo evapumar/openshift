@@ -183,7 +183,7 @@
    apiVersion: project.openshift.io/v1
    kind: Project
    metadata:
-     name: delete-dev-0
+     name: delete-dev-x
    spec:
      finalizers:
      - foregroundDeletion
@@ -191,12 +191,12 @@
 
    ```
    ```
-   oc delete project delete-dev-0
+   oc delete project delete-dev-x
    
    
    ```
    ```
-   oc get ns delete-dev-0 --output json | sed '/ "foregroundDeletion"/d' | curl -k  -H "Authorization: Bearer xxx" -H "Content-Type: application/json" -X PUT --data-binary @- https://api.openshift.sebastian-colomar.es:6443/api/v1/namespaces/delete-dev-0/finalize
+   oc get ns delete-dev-x --output json | sed '/ "foregroundDeletion"/d' | curl -k  -H "Authorization: Bearer xxx" -H "Content-Type: application/json" -X PUT --data-binary @- https://api.openshift.sebastian-colomar.es:6443/api/v1/namespaces/delete-dev-x/finalize
    
    
    ```
