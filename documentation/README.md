@@ -7,3 +7,5 @@ https://learn.openshift.com/
 https://kubernetes.io/docs/home/
 
 https://docs.docker.com/
+
+https://manage.openshift.com/
