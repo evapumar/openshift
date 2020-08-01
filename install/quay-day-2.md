@@ -13,3 +13,4 @@
 1. https://access.redhat.com/documentation/en-us/red_hat_quay/3.3/html/manage_red_hat_quay/ldap-authentication-setup-for-quay-enterprise
 1. https://access.redhat.com/documentation/en-us/red_hat_quay/3.3/html-single/red_hat_quay_api_guide/index
 1. https://access.redhat.com/solutions/3498981
+1. https://www.linode.com/docs/databases/postgresql/how-to-back-up-your-postgresql-database
