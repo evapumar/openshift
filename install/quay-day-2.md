@@ -14,3 +14,23 @@
 1. https://access.redhat.com/documentation/en-us/red_hat_quay/3.3/html-single/red_hat_quay_api_guide/index
 1. https://access.redhat.com/solutions/3498981
 1. https://www.linode.com/docs/databases/postgresql/how-to-back-up-your-postgresql-database
+   ```
+   pg_dump quay > quay.sql
+   pg_dumpall > quay_all.sql
+   pg_dump clair > clair.sql
+   pg_dumpall > clair_all.sql
+   
+   dropdb quay
+   createdb quay
+   psql quay < quay.sql
+   
+   dropdb clair
+   createdb clair
+   psql clair < clair.sql
+   
+   psql -f quay_all.sql postgres
+   psql -f clair_all.sql postgres
+   
+   
+   ```
+   
