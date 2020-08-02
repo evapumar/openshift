@@ -3,8 +3,18 @@
    `oc new-project quay-enterprise`
 1. Install the Red Hat Quay Operator
 1. Load credentials to obtain Quay:
-
-   `oc apply -f https://raw.githubusercontent.com/secobau/openshift/master/install/redhat-quay-pull-secret.yaml`
+   
+   ```
+   oc get secret -n openshift-config pull-secret -o yaml > pull-secret.yaml
+   
+   
+   ```
+   Modify the secret removing all unnecessary metada and load it again:
+   ```
+   oc get secret -n quay-enterprise pull-secret.yaml
+   
+   
+   ```
 1. Please customize the following configuration before applying it:
 
    `oc apply -f https://raw.githubusercontent.com/secobau/openshift/master/install/quayEcosystem.yaml`
